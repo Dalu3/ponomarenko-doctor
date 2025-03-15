@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/ponomarenko-doctor/static/css/main.ae8bab02.css",
-    "main.js": "/ponomarenko-doctor/static/js/main.6bb335ba.js",
-    "static/media/background.png": "/ponomarenko-doctor/static/media/background.386fceb3f6bde5ce08a5.png",
-    "static/media/lines.png": "/ponomarenko-doctor/static/media/lines.ccd2b52897336f47028a.png",
-    "static/media/image-book.jpg": "/ponomarenko-doctor/static/media/image-book.3cee2afa836ae34f869a.jpg",
-    "static/media/photo.jpg": "/ponomarenko-doctor/static/media/photo.1ab6d1b6c60aea8b12ef.jpg",
-    "static/media/logo.png": "/ponomarenko-doctor/static/media/logo.1451d70db2ad7ecdc227.png",
-    "static/media/linkedin.svg": "/ponomarenko-doctor/static/media/linkedin.56026bbcac9852361b7803d6cf5934a8.svg",
-    "static/media/instagram.svg": "/ponomarenko-doctor/static/media/instagram.9b9f2a32a922b7990c3614328d5f2180.svg",
-    "index.html": "/ponomarenko-doctor/index.html",
-    "main.ae8bab02.css.map": "/ponomarenko-doctor/static/css/main.ae8bab02.css.map",
-    "main.6bb335ba.js.map": "/ponomarenko-doctor/static/js/main.6bb335ba.js.map"
+    "main.css": "/static/css/main.c5592f7b.css",
+    "main.js": "/static/js/main.05ce16c9.js",
+    "static/media/background.png": "/static/media/background.386fceb3f6bde5ce08a5.png",
+    "static/media/lines.png": "/static/media/lines.ccd2b52897336f47028a.png",
+    "static/media/image-book.jpg": "/static/media/image-book.3cee2afa836ae34f869a.jpg",
+    "static/media/photo.jpg": "/static/media/photo.1ab6d1b6c60aea8b12ef.jpg",
+    "static/media/logo.png": "/static/media/logo.1451d70db2ad7ecdc227.png",
+    "static/media/linkedin.svg": "/static/media/linkedin.56026bbcac9852361b7803d6cf5934a8.svg",
+    "static/media/instagram.svg": "/static/media/instagram.9b9f2a32a922b7990c3614328d5f2180.svg",
+    "index.html": "/index.html",
+    "main.c5592f7b.css.map": "/static/css/main.c5592f7b.css.map",
+    "main.05ce16c9.js.map": "/static/js/main.05ce16c9.js.map"
   },
   "entrypoints": [
-    "static/css/main.ae8bab02.css",
-    "static/js/main.6bb335ba.js"
+    "static/css/main.c5592f7b.css",
+    "static/js/main.05ce16c9.js"
   ]
 }
