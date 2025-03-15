@@ -1,0 +1,478 @@
+.main-section{
+    background-image: url('../images/background.png'); 
+    background-size: cover;
+    display: flex;
+    justify-content: start;
+    text-align: left;
+    min-height: 100vh;
+    padding: 160px 0px 0px 150px;
+    position: relative;
+    max-width: 100%;
+    padding-top: 250px
+}
+.main-content{
+    color: #EDFDFC; 
+    max-width: 1000px;
+    padding-bottom: 300px;
+}
+.main-title {
+    font-size: 4rem; /* Scales with viewport */
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.main-subtitle {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.main-description {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+.main-button {
+    font-size: 1.2rem;
+    color: white;
+    background-color: #124847;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    min-width: 160px; /* Prevents button from shrinking too much */
+}
+
+.main-button:hover{
+    background-color: #0c2f2e;
+}
+
+.about-container,
+.experience-container,
+.services-container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ensures even spacing */
+}
+
+
+
+@media screen and (max-width: 320px) { 
+    .main-section{
+        position: relative;
+        background-image: url('../images/background.png'); 
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        min-height: 80vh;
+        background-position: 35%;
+        flex-direction: column;
+        padding-inline: 10%;
+        padding-top: 250px;
+
+    }
+    .main-content{
+        color: #EDFDFC; 
+        max-width: 1200px;
+        padding-bottom: 300px;
+        padding-top: 50px;
+        padding-left: 0;
+    }
+    .responsive-break {
+        display: none;
+    }
+    .main-title {
+        font-size: 2.1rem;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.2;
+    }
+    
+    .main-subtitle {
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+    
+    .main-description {
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin: 20px 0;
+    }
+    
+    .main-button {
+        font-size: 1rem;
+        color: white;
+        background-color: #124847;
+        border: none;
+        border-radius: 50px;
+        padding: 15px 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: bold;
+        min-width: 160px; 
+    }}
+    @media screen and (min-width: 320px) and (max-width: 375px) { 
+        .main-section{
+        position: relative;
+        background-image: url('../images/background.png'); 
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        min-height: 90vh;
+        background-position: 35%;
+        flex-direction: column;
+        padding-inline: 10%;
+        padding-top: 250px;
+
+    }
+    .responsive-break {
+        display: none;
+    }
+
+    .main-content{
+        color: #EDFDFC; 
+        max-width: 1200px;
+        padding-bottom: 300px;
+        padding-top: 0px;
+        padding-left: 0;
+        }
+        .main-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .main-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .main-description {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+        
+        .main-button {
+            font-size: 1rem;
+            color: white;
+            background-color: #124847;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            min-width: 160px; 
+    }}
+    @media screen  and (min-width: 375px) and (max-width: 425px){ 
+        .main-section{
+            position: relative;
+            background-image: url('../images/background.png'); 
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            min-height: 80vh;
+            background-position: 35%;
+            flex-direction: column;
+            padding-inline: 10%;
+            padding-top: 250px;
+    
+        }
+        .main-content{
+            color: #EDFDFC; 
+            max-width: 1200px;
+            padding-bottom: 300px;
+            padding-top: 50px;
+            padding-left: 0;
+        }
+        .responsive-break {
+            display: none;
+        }
+
+        .main-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .main-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .main-description {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+        
+        .main-button {
+            font-size: 1rem;
+            color: white;
+            background-color: #124847;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            min-width: 160px; /* Prevents button from shrinking too much */
+    }}
+    @media screen  and (min-width: 425px) and (max-width: 500px){ 
+        .main-section{
+            position: relative;
+            background-image: url('../images/background.png'); 
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            min-height: 80vh;
+            background-position: 35%;
+            flex-direction: column;
+            padding-inline: 10%;
+            padding-top: 250px;
+    
+        }
+        .responsive-break {
+            display: none;
+        }
+        .main-content{
+            color: #EDFDFC; 
+            max-width: 1200px;
+            padding-bottom: 300px;
+            padding-top: 50px;
+            padding-left: 0;
+        }
+        .main-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .main-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .main-description {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+        
+        .main-button {
+            font-size: 1.2rem;
+            color: white;
+            background-color: #124847;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            min-width: 160px; /* Prevents button from shrinking too much */
+    }}
+    @media screen  and (min-width: 500px) and (max-width: 700px){
+        .main-section{
+            position: relative;
+            background-image: url('../images/background.png'); 
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            min-height: 80vh;
+            background-position: 35%;
+            flex-direction: column;
+            padding-inline: 10%;
+            padding-top: 250px;
+    
+        }
+        .responsive-break {
+            display: none;
+        }
+        .main-content{
+            color: #EDFDFC; 
+            max-width: 1200px;
+            padding-bottom: 300px;
+            padding-top: 50px;
+            padding-left: 0;
+        }
+        .main-title {
+            font-size: 2.7rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .main-subtitle {
+            font-size: 1.7rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .main-description {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+        
+        .main-button {
+            font-size: 1.4rem;
+            color: white;
+            background-color: #124847;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            min-width: 160px; /* Prevents button from shrinking too much */
+    }}
+    @media screen  and (min-width: 700px) and (max-width: 999px){
+        .main-section{
+            position: relative;
+            background-image: url('../images/background.png'); 
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            min-height: 80vh;
+            background-position: 35%;
+            flex-direction: column;
+            padding-inline: 10%;
+            padding-top: 250px;
+    
+        }
+        .responsive-break {
+            display: none;
+        }
+        .main-content{
+            color: #EDFDFC; 
+            max-width: 1200px;
+            padding-bottom: 300px;
+            padding-top: 50px;
+            padding-left: 0;
+        }
+        .main-title {
+            font-size: 2.9rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .main-subtitle {
+            font-size: 2.1rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        
+        .main-description {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+        
+        .main-button {
+            font-size: 1.6rem;
+            color: white;
+            background-color: #124847;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            min-width: 10px;
+    }}
+    @media screen  and (min-width: 999px) and (max-width: 1200px){
+        .main-section{
+            background-image: url('../images/background.png'); 
+            background-size: cover;
+            display: flex;
+            justify-content: start;
+            text-align: left;
+            min-height: 100vh;
+            padding: 200px 0px 0px 150px;
+            position: relative;
+            max-width: 100%;
+            padding-top: 300px
+        }
+        .main-content{
+            color: #EDFDFC; 
+            max-width: 1000px;
+            padding-bottom: 300px;
+        }
+        .main-title {
+            font-size: 4rem; /* Scales with viewport */
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+        
+        .main-subtitle {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        
+        .main-description {
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+        
+        .main-button {
+            font-size: 1.2rem;
+            color: white;
+            background-color: #124847;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            min-width: 160px; /* Prevents button from shrinking too much */
+        }
+        
+        .main-button:hover{
+            background-color: #0c2f2e;
+        }
+        
+        .about-container,
+        .experience-container,
+        .services-container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Ensures even spacing */
+        }
+    }
+
+    
+    

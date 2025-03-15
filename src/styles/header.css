@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+}
+
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+#experience {
+    scroll-margin-top: 50px;
+}
+
+#services {
+    scroll-margin-top: 200px;
+}
+
+#about {
+    scroll-margin-top: -10px;
+}
+
+button {
+    font-family: "Raleway", sans-serif;
+}
+
+.header-main-div {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: #EDFDFC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px; /* Reduced padding for mobile */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    flex-wrap: wrap;
+    min-height: 80px;
+}
+
+.header-logo {
+    width: 160px;
+    height: auto;
+    cursor: pointer;
+}
+
+.menu-icon {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #165956;
+    z-index: 20;
+    position: relative; /* Added for positioning */
+}
+
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10; /* Ensure it's below the menu but above other content */
+}
+
+.close-icon {
+    font-size: 40px;
+    color: #165956;
+    z-index: 30;
+    position: absolute; /* Position the close icon */
+    top: 37px; /* Adjust as needed */
+    left: 4px; /* Adjust as needed */
+}
+
+.hamburger-icon {
+    font-size: 30px;
+    color: #165956;
+}
+
+.header-second-div {
+    display: flex;
+    align-items: center;
+    padding-right: 100px;
+    gap: 25px;
+}
+
+.nav-list {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    font-size: 18px;
+    color: #165956;
+    cursor: pointer;
+    padding: 5px 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.nav-item:hover {
+    color: #0a2b2a;
+}
+
+.header-button {
+    font-size: 18px;
+    color: white;
+    background-color: #165956;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.header-button:hover {
+    background-color: #0e3c3a;
+}
+
+/* Responsive Styles */
+@media (max-width: 998px) {
+    .menu-icon {
+        display: block; /* Show hamburger menu on small screens */
+        padding-right: 50px;
+    }
+
+.header-logo {
+    width: 140px;
+    height: auto;
+    cursor: pointer;
+}
+
+    .header-second-div {
+        display: none; /* Hide the navigation by default on small screens */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background-color: #EDFDFC;
+        width: 250px;
+        padding: 20px;
+        padding-top: 35px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        z-index: 15;
+    }
+
+    .header-second-div.open {
+        display: flex; /* Show navigation when menu is open */
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header-button {
+        width: 100%;
+        text-align: center;
+    }
+}
