@@ -180,7 +180,7 @@
         }
     
         .experience-title {
-            font-size: 45px;
+            font-size: 35px;
             font-weight: bold;
             color: #165956;
             margin-bottom: 15px;
@@ -190,7 +190,7 @@
         }
     
         .experience-list {
-            font-size: 30px;
+            font-size: 20px;
             color: #124846;
             list-style: none;
             padding: 0;
@@ -222,7 +222,7 @@
         }
     
         .experience-item-title {
-            font-size: 30px; /* Larger size for the first line */
+            font-size: 20px; /* Larger size for the first line */
             font-weight: bold; 
             color: #165956;/* Optional: Make it bold */
         }
@@ -277,7 +277,7 @@
             transform: translateX(-32.5%); 
         }
         .experience-list {
-            font-size: 30px;
+            font-size: 20px;
             color: #124846;
             list-style: none;
             padding: 0;
@@ -300,12 +300,12 @@
             padding-right: 20PX;
         }
         .experience-title {
-            font-size: 40px;
+            font-size: 35px;
             padding-left: 0px;
             margin-left: 0px;
         }
         .experience-item-title {
-            font-size: 30px; /* Larger size for the first line */
+            font-size: 20px; /* Larger size for the first line */
         }
     }
     @media screen and (min-width: 470px) and (max-width: 650px) {
@@ -357,7 +357,7 @@
             transform: translateX(-32.5%); 
         }
         .experience-list {
-            font-size: 25px;
+            font-size: 20px;
             color: #124846;
             list-style: none;
             padding: 0;
@@ -380,12 +380,12 @@
             padding-right: 20PX;
         }
         .experience-title {
-            font-size: 35px;
+            font-size: 30px;
             padding-left: 0px;
             margin-left: 0px;
         }
         .experience-item-title {
-            font-size: 25px; /* Larger size for the first line */
+            font-size: 20px; /* Larger size for the first line */
         }
     }
     @media screen and (min-width: 365px) and (max-width: 470px) {
@@ -448,7 +448,7 @@
             transform: translateX(-32.5%); 
         }
         .experience-list {
-            font-size: 20px;
+            font-size: 15px;
             color: #124846;
             list-style: none;
             padding: 0;
@@ -471,12 +471,12 @@
             padding-right: 20PX;
         }
         .experience-title {
-            font-size: 30px;
+            font-size: 20px;
             padding-left: 0px;
 
         }
         .experience-item-title {
-            font-size: 20px; /* Larger size for the first line */
+            font-size: 15px; /* Larger size for the first line */
         }
 
     }
@@ -547,7 +547,7 @@
             padding-right: 15px;
         }
         .experience-title {
-            font-size: 25px;
+            font-size: 20px;
             padding-left: 0px;
         }
         .experience-list {
@@ -557,7 +557,7 @@
             padding: 0;
         }
         .experience-item-title {
-            font-size: 18px; /* Larger size for the first line */
+            font-size: 15px; /* Larger size for the first line */
         }
         .experience-list li::before {
             content: "›"; /* Arrow symbol (you can use other symbols or Unicode) */
