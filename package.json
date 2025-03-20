@@ -26,9 +26,6 @@
   },
 "homepage": "https://Dalu3.github.io/ponomarenko-doctor/",
 
-
-
-
   "browserslist": {
     "production": [
       ">0.2%",
