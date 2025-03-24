@@ -506,7 +506,7 @@ width: 40px;
             background-color: #165956;
             padding-top: 150px;
             padding-right: 30px;
-            padding-left: 20px;
+            padding-left: 50px;
         }
         
         .footer-title {
@@ -740,7 +740,7 @@ width: 40px;
             background-color: #165956;
             padding-top: 150px;
             padding-right: 30px;
-            margin-left: 20px;
+            margin-left: 50px;
             padding-left: 0px;
         }
         .footer-title {
@@ -1284,7 +1284,7 @@ width: 40px;
             width: 82%; /* Adjust width for mobile */
             max-width: 400px; /* Further reduce max-width */
             margin: 0 auto 20px; /* Center the form and add spacing */
-            padding: 10px 40px; /* Add padding for better spacing */
+            padding: 10px 20px; /* Add padding for better spacing */
             background-color: #EDFDFC; /* Optional: Add background color */
             border-radius: 5px; /* Optional: Add border radius */
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); 
