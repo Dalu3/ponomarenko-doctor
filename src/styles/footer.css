@@ -368,7 +368,8 @@ width: 40px;
     .input-wrapper {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        flex: 1 1 48%; 
+        min-width: 0; 
         margin-top: 20px;
     }
     
@@ -595,6 +596,8 @@ width: 40px;
         
         .input-group {
             display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; 
             justify-content: space-between;
             gap: 10px; /* Reduce gap */
         }
@@ -602,7 +605,8 @@ width: 40px;
         .input-wrapper {
             display: flex;
             flex-direction: column;
-            width: 100%;
+            flex: 1 1 48%; 
+            min-width: 0; 
             margin-top: 15px; /* Reduce margin */
         }
         
@@ -829,15 +833,18 @@ width: 40px;
         
         .input-group {
             display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; 
             justify-content: space-between;
-            gap: 10px; /* Reduce gap */
+            gap: 5px; /* Reduce gap */
             
         }
         
         .input-wrapper {
             display: flex;
+            flex: 1 1 48%; 
+            min-width: 0; 
             flex-direction: column;
-            width: 100%;
             margin-top: 15px; /* Reduce margin */
         }
         
@@ -1067,6 +1074,8 @@ width: 40px;
         .input-group {
             display: flex;
             justify-content: space-between;
+            flex-direction: row;
+            flex-wrap: wrap; 
             gap: 10px; /* Reduce gap */
             
         }
@@ -1074,7 +1083,8 @@ width: 40px;
         .input-wrapper {
             display: flex;
             flex-direction: column;
-            width: 100%;
+            flex: 1 1 48%; 
+            min-width: 0; 
             margin-top: 15px; /* Reduce margin */
         }
         
@@ -1311,7 +1321,8 @@ width: 40px;
         .input-wrapper {
             display: flex;
             flex-direction: column;
-            width: 100%;
+            flex: 1 1 48%; 
+            min-width: 0; 
             margin-top: 15px; /* Reduce margin */
         }
         
