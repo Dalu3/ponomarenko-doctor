@@ -4,9 +4,27 @@ body {
     font-family: "Raleway", sans-serif;
 }
 
-body, html {
+body,
+html {
     overflow-x: hidden;
     width: 100%;
+    max-width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+    display: none;
+}
+
+#root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 #experience {
@@ -26,10 +44,11 @@ button {
 }
 
 .header-main-div {
+    box-sizing: border-box;
     position: fixed;
     top: 0;
     z-index: 10;
-    background-color: #EDFDFC;
+    background-color: #edfdfc;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,8 +80,8 @@ button {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 10; /* Ensure it's below the menu but above other content */
 }
@@ -84,7 +103,7 @@ button {
 .header-second-div {
     display: flex;
     align-items: center;
-    padding-right: 100px;
+    padding-right: 0;
     gap: 25px;
 }
 
@@ -114,15 +133,11 @@ button {
     color: white;
     background-color: #165956;
     border: none;
-    padding: 15px 30px;
+    padding: 14px 34px;
     border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-weight: 500;
-}
-
-.header-button:hover {
-    background-color: #0e3c3a;
+    font-weight: 600;
 }
 
 /* Responsive Styles */
@@ -132,11 +147,11 @@ button {
         padding-right: 50px;
     }
 
-.header-logo {
-    width: 120px;
-    height: auto;
-    cursor: pointer;
-}
+    .header-logo {
+        width: 120px;
+        height: auto;
+        cursor: pointer;
+    }
 
     .header-second-div {
         display: none; /* Hide the navigation by default on small screens */
@@ -144,7 +159,7 @@ button {
         position: absolute;
         top: 80px;
         right: 20px;
-        background-color: #EDFDFC;
+        background-color: #edfdfc;
         width: 250px;
         padding: 20px;
         padding-top: 35px;
@@ -165,5 +180,156 @@ button {
     .header-button {
         width: 100%;
         text-align: center;
+    }
+}
+
+.hamburger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+}
+
+.hamburger span {
+    position: absolute;
+    left: 50%;
+    width: 24px;
+    height: 1.8px;
+    margin-left: -12px;
+    background-color: #165956;
+    border-radius: 3px;
+    transition:
+        transform 0.3s ease,
+        opacity 0.2s ease;
+    will-change: transform, opacity;
+}
+
+.hamburger span:nth-child(1) {
+    top: 14px;
+}
+
+.hamburger span:nth-child(2) {
+    top: 21px;
+}
+
+.hamburger span:nth-child(3) {
+    top: 28px;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    z-index: 9;
+}
+
+.menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+@media (max-width: 1060px) {
+    .header-main-div {
+        box-sizing: border-box;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .menu-overlay {
+        display: block;
+    }
+
+    .header-logo {
+        width: 120px;
+    }
+
+    .header-second-div {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 5px;
+        right: 20px;
+        width: min(220px, calc(100vw - 40px));
+        padding: 50px 20px 20px;
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-12px);
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease,
+            visibility 0.3s ease;
+        z-index: 20;
+    }
+
+    .header-second-div.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .header-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 376px) {
+    .header-second-div {
+        right: 12px;
+        width: min(200px, calc(100vw - 24px));
+        padding: 42px 14px 14px;
+        border-radius: 16px;
+    }
+
+    .nav-list {
+        gap: 12px;
+    }
+
+    .nav-item {
+        padding: 4px 8px;
+    }
+
+    .header-button {
+        padding: 12px 20px;
     }
 }

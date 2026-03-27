@@ -1,20 +1,35 @@
 import React from "react";
 
-export default function Main(){
+export default function Main() {
     const scrollToSection = (id) => {
         const section = document.getElementById(id);
-        if(section){
-            section.scrollIntoView({behavior:"smooth"})
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
         }
     };
-    return(
+
+    return (
         <main className="main-section">
             <div className="main-content">
-            <p className="main-subtitle">Надійна та доступна допомога кожному.</p>
-            <h1 className="main-title">Пономаренко Анастасія Олександрівна</h1>
-            <p className="main-description">Лікар-педіатр та лікар загальної  <span className="responsive-break"><br></br></span> практики сімейної медицини</p>
-            <button className="main-button" onClick={() => scrollToSection('footer')} >Зв’язатися зі мною</button>
+                <p className="main-subtitle">
+                    <span className="main-subtitle-desktop">Професійна медична допомога</span>
+                    <span className="main-subtitle-mobile">Для дітей і дорослих</span>
+                </p>
+                <h1 className="main-title">
+                    <span className="main-title-desktop">
+                        Пономаренко <span className="responsive-break"><br></br></span>Анастасія Олександрівна
+                    </span>
+                    <span className="main-title-mobile">Анастасія Пономаренко</span>
+                </h1>
+                <p className="main-description">
+                    <span className="main-description-desktop">Педіатр · Лікар загальної практики сімейної медицини</span>
+                    <span className="main-description-mobile">Педіатр · Сімейний лікар</span>
+                </p>
+                <button className="main-button" onClick={() => scrollToSection("footer")}>
+                    <span className="main-button-label-desktop">Зв’язатися зі мною</span>
+                    <span className="main-button-label-mobile">Записатися на прийом</span>
+                </button>
             </div>
         </main>
-    )
+    );
 }

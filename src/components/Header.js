@@ -1,83 +1,116 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../images/logo.png";
 
 export default function Header() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const menuRef = useRef(null);
+    const bookingUrl = "https://helsi.me/doctor/78c465a1-8408-4997-bb04-3588bcfa2087";
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const headerRef = useRef(null);
 
     const toggleMenu = () => {
-        setMenuOpen((prev) => !prev);
+        setIsMenuOpen((prev) => !prev);
     };
 
-    const handleClickOutside = (event) => {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
-            setMenuOpen(false);
-        }
+    const closeMenu = () => {
+        setIsMenuOpen(false);
     };
 
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        setMenuOpen(false);
+    const scrollToTarget = (targetId) => {
+        setIsMenuOpen(false);
+
+        requestAnimationFrame(() => {
+            if (targetId === "top") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                return;
+            }
+
+            const section = document.getElementById(targetId);
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        });
     };
 
-    const scrollToSection = (id) => {
-        const section = document.getElementById(id);
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        }
-        setMenuOpen(false);
+    const openBooking = () => {
+        setIsMenuOpen(false);
+        window.open(bookingUrl, "_blank", "noopener,noreferrer");
     };
 
     useEffect(() => {
-        if (menuOpen) {
-            document.addEventListener("mousedown", handleClickOutside);
-            document.addEventListener("touchstart", handleClickOutside); // Support for mobile
-        } else {
-            document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("touchstart", handleClickOutside);
+        if (!isMenuOpen) {
+            return undefined;
         }
+
+        const handleClickOutside = (event) => {
+            if (headerRef.current && !headerRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
 
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("touchstart", handleClickOutside);
         };
-    }, [menuOpen]);
+    }, [isMenuOpen]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 1060) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     return (
-        <header className={`header-main-div ${menuOpen ? "sticky" : ""}`} ref={menuRef}>
-            <img
-                src={logo}
-                onClick={scrollToTop}
-                className="header-logo"
-                alt="Logo"
+        <>
+            <div
+                className={`menu-overlay ${isMenuOpen ? "open" : ""}`}
+                onClick={closeMenu}
+                aria-hidden={!isMenuOpen}
             />
-            <button className="menu-icon" onClick={toggleMenu}>
-                {menuOpen ? (
-                    <span className="close-icon">&times;</span>
-                ) : (
-                    <span className="hamburger-icon">&#9776;</span>
-                )}
-            </button>
-
-            {/* Dark overlay when menu is open */}
-            {menuOpen && <div className="menu-overlay" onClick={() => setMenuOpen(false)}></div>}
-
-            <div className={`header-second-div ${menuOpen ? "open" : ""}`}>
-                <ul className="nav-list">
-                    <li className="nav-item" onClick={() => scrollToSection('about')}>
-                        Ваш лікар
-                    </li>
-                    <li className="nav-item" onClick={() => scrollToSection('experience')}>
-                        Досвід
-                    </li>
-                    <li className="nav-item" onClick={() => scrollToSection('services')}>
-                        Послуги
-                    </li>
-                </ul>
-                <button className="header-button" onClick={() => scrollToSection('footer')}>
-                    Запишіться зараз
+            <header className={`header-main-div ${isMenuOpen ? "sticky" : ""}`} ref={headerRef}>
+                <img
+                    src={logo}
+                    onClick={() => scrollToTarget("top")}
+                    className="header-logo"
+                    alt="Logo"
+                />
+                <button
+                    type="button"
+                    className={`menu-icon hamburger ${isMenuOpen ? "open" : ""}`}
+                    onClick={toggleMenu}
+                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-expanded={isMenuOpen}
+                    aria-controls="header-navigation"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-            </div>
-        </header>
+
+                <div className={`header-second-div ${isMenuOpen ? "open" : ""}`} id="header-navigation">
+                    <ul className="nav-list">
+                        <li className="nav-item" onClick={() => scrollToTarget("about")}>
+                            Ваш лікар
+                        </li>
+                        <li className="nav-item" onClick={() => scrollToTarget("experience")}>
+                            Досвід
+                        </li>
+                        <li className="nav-item" onClick={() => scrollToTarget("services")}>
+                            Послуги
+                        </li>
+                    </ul>
+                    <button className="header-button" onClick={openBooking}>
+                        Запишіться зараз
+                    </button>
+                </div>
+            </header>
+        </>
     );
 }
