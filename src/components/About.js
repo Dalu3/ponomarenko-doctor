@@ -14,10 +14,12 @@ export default function About() {
     }
 };
   return (
-    <section id="about" className="about-section">
+    <section id="about" className="about-section" lang="uk">
       <div className="about-container">
         <div className="about-text">
-          <h2 className="about-title">Мене звати Анастасія</h2>
+                    <h2 className="about-title">
+                        Мене звати <span className="about-title-name">Анастасія</span>
+                    </h2>
           <p className="about-subtitle">
             Я лікар-педіатр та лікар загальної практики сімейної медицини із
             5-річним досвідом.
