@@ -107,7 +107,7 @@ export default function Header() {
                         </li>
                     </ul>
                     <button className="header-button" onClick={openBooking}>
-                        Запишіться зараз
+                        {"Запишіться\u00A0зараз"}
                     </button>
                 </div>
             </header>

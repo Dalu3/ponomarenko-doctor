@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import inst from "../images/instagram.svg";
 import linkedin from "../images/linkedin.svg";
@@ -6,6 +6,7 @@ import linkedin from "../images/linkedin.svg";
 
 const Footer = () => {
     const form = useRef();
+    const currentYear = new Date().getFullYear();
     
     // Form state
     const [formData, setFormData] = useState({
@@ -83,9 +84,20 @@ const Footer = () => {
                         </a>
                     </div>
 
-                    <a href="https://darialysunets.com/" className="copywrite-link" target="_blank" rel="noopener noreferrer">
-                        <div className="copywrite">© 2025 by Daria Lysunets</div>
-                    </a>
+                    <div className="copywrite copywrite--studio">
+                        <span className="copywrite-line">© {currentYear} Anastasiia Ponomarenko</span>
+                        <span className="copywrite-line">
+                            Built by{" "}
+                            <a
+                                href="https://dashly.studio/"
+                                className="copywrite-link copywrite-brand-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <span className="copywrite-brand">Dashly Studio</span>
+                            </a>
+                        </span>
+                    </div>
                 </div>
 
                 <div className="contact-form-container">

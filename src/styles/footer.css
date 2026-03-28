@@ -60,7 +60,7 @@
 
 .copywrite-link:hover {
     text-decoration: none; /* No underline on hover */
-    color: #08201f; /* Change color on hover */
+    color: #165956; /* Change color on hover */
 }
 
 .copywrite-link:active {
@@ -78,6 +78,42 @@
 .copywrite:hover {
     font-weight: 600;
     text-decoration: none;
+}
+
+.copywrite.copywrite--studio {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0;
+    color: #c3c7cd;
+    font-synthesis: none;
+}
+
+.copywrite.copywrite--studio .copywrite-line {
+    display: block;
+    white-space: nowrap;
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+}
+
+.copywrite.copywrite--studio .copywrite-brand {
+    color: inherit;
+    transition: color 0.25s ease;
+}
+
+.copywrite-brand-link:hover .copywrite-brand {
+    color: #ffffff;
+}
+
+.copywrite-brand-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 
@@ -126,7 +162,7 @@ label {
     font-size: 20px;
     outline: none;
     border: none;
-    border-bottom: 1px solid #1f7e79;
+    border-bottom: 1px solid #165956;
 
 }
 
@@ -150,7 +186,7 @@ label {
 }
 
 .contact-form button:hover {
-    background-color: #124846;
+    background-color: #165956;
 }
 
 
@@ -318,7 +354,7 @@ width: 40px;
     
     .copywrite-link:hover {
         text-decoration: none; /* No underline on hover */
-        color: #08201f; /* Change color on hover */
+        color: #165956; /* Change color on hover */
     }
     
     .copywrite-link:active {
@@ -386,7 +422,7 @@ width: 40px;
         font-size: 20px;
         outline: none;
         border: none;
-        border-bottom: 1px solid #1f7e79;
+        border-bottom: 1px solid #165956;
     
     }
     
@@ -411,7 +447,7 @@ width: 40px;
     }
     
     .contact-form button:hover {
-        background-color: #124846;
+        background-color: #165956;
     }
     
     
@@ -547,7 +583,7 @@ width: 40px;
         
         .copywrite-link:hover {
             text-decoration: none; /* No underline on hover */
-            color: #08201f; /* Change color on hover */
+            color: #165956; /* Change color on hover */
         }
         
         .copywrite-link:active {
@@ -621,7 +657,7 @@ width: 40px;
             font-size: 16px; /* Reduce font size */
             outline: none;
             border: none;
-            border-bottom: 1px solid #1f7e79;
+            border-bottom: 1px solid #165956;
         }
         
         .contact-form textarea {
@@ -645,7 +681,7 @@ width: 40px;
         }
         
         .contact-form button:hover {
-            background-color: #124846;
+            background-color: #165956;
         }
         
         .notification {
@@ -784,7 +820,7 @@ width: 40px;
         
         .copywrite-link:hover {
             text-decoration: none; /* No underline on hover */
-            color: #08201f; /* Change color on hover */
+            color: #165956; /* Change color on hover */
         }
         
         .copywrite-link:active {
@@ -859,7 +895,7 @@ width: 40px;
             font-size: 16px; /* Reduce font size */
             outline: none;
             border: none;
-            border-bottom: 1px solid #1f7e79;
+            border-bottom: 1px solid #165956;
         }
         
         .contact-form textarea {
@@ -883,7 +919,7 @@ width: 40px;
         }
         
         .contact-form button:hover {
-            background-color: #124846;
+            background-color: #165956;
         }
         
         .notification {
@@ -1022,7 +1058,7 @@ width: 40px;
         
         .copywrite-link:hover {
             text-decoration: none; /* No underline on hover */
-            color: #08201f; /* Change color on hover */
+            color: #165956; /* Change color on hover */
         }
         
         .copywrite-link:active {
@@ -1098,7 +1134,7 @@ width: 40px;
             font-size: 16px; /* Reduce font size */
             outline: none;
             border: none;
-            border-bottom: 1px solid #1f7e79;
+            border-bottom: 1px solid #165956;
         }
         
         .contact-form textarea {
@@ -1122,7 +1158,7 @@ width: 40px;
         }
         
         .contact-form button:hover {
-            background-color: #124846;
+            background-color: #165956;
         }
         
         .notification {
@@ -1259,7 +1295,7 @@ width: 40px;
         
         .copywrite-link:hover {
             text-decoration: none; /* No underline on hover */
-            color: #08201f; /* Change color on hover */
+            color: #165956; /* Change color on hover */
         }
         
         .copywrite-link:active {
@@ -1334,7 +1370,7 @@ width: 40px;
             font-size: 16px; /* Reduce font size */
             outline: none;
             border: none;
-            border-bottom: 1px solid #1f7e79;
+            border-bottom: 1px solid #165956;
         }
         
         .contact-form textarea {
@@ -1358,7 +1394,7 @@ width: 40px;
         }
         
         .contact-form button:hover {
-            background-color: #124846;
+            background-color: #165956;
         }
         
         .notification {

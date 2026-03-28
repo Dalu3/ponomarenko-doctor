@@ -125,10 +125,13 @@ button {
 }
 
 .nav-item:hover {
-    color: #0a2b2a;
+    color: #165956;
 }
 
 .header-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 18px;
     color: white;
     background-color: #165956;
@@ -138,6 +141,12 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 600;
+    line-height: 1.1;
+    text-wrap: nowrap;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
 }
 
 /* Responsive Styles */
@@ -275,11 +284,13 @@ button {
     .header-second-div {
         display: flex;
         flex-direction: column;
+        gap: 10px;
         position: absolute;
         top: 5px;
         right: 20px;
-        width: min(220px, calc(100vw - 40px));
-        padding: 50px 20px 20px;
+        width: min(208px, calc(100vw - 32px));
+        padding: 48px 16px 10px;
+        --menu-point-font-size: 16px;
         background-color: #ffffff;
         border-radius: 20px;
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
@@ -304,32 +315,47 @@ button {
     .nav-list {
         flex-direction: column;
         width: 100%;
-        gap: 15px;
+        gap: 10px;
+    }
+
+    .nav-item {
+        font-size: var(--menu-point-font-size);
+        font-weight: 700;
+        padding: 3px 6px;
     }
 
     .header-button {
         width: 100%;
         text-align: center;
+        font-size: var(--menu-point-font-size);
+        font-weight: 700;
+        padding: 11px 14px;
+        margin: 0 0 7px;
     }
 }
 
 @media (max-width: 376px) {
     .header-second-div {
         right: 12px;
-        width: min(200px, calc(100vw - 24px));
-        padding: 42px 14px 14px;
+        width: min(192px, calc(100vw - 24px));
+        gap: 8px;
+        padding: 40px 12px 8px;
+        --menu-point-font-size: 15px;
         border-radius: 16px;
     }
 
     .nav-list {
-        gap: 12px;
+        gap: 8px;
     }
 
     .nav-item {
-        padding: 4px 8px;
+        font-size: var(--menu-point-font-size);
+        padding: 2px 6px;
     }
 
     .header-button {
-        padding: 12px 20px;
+        font-size: var(--menu-point-font-size);
+        padding: 10px 10px;
+        padding-bottom: 14px;
     }
 }

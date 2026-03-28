@@ -38,9 +38,9 @@ const Services = () => {
     return (
         <div className="services-section">
         <h2 className="services-section-title">
-            <span className="title-left">Як я можу допомогти</span>
+            <span className="title-left">Як я можу допомогти </span>
             <span className="title-underline"></span>
-            <span className="title-right">вам і вашій родині?</span>
+            <span className="title-right"> вам і вашій родині?</span>
         </h2>
             <div className="services-container">
                 {serviceData.map((service, index) => (

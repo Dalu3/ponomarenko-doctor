@@ -59,7 +59,7 @@
     margin-top: 30px;
     border-radius: 3.125rem;
     color: #edfdfc;
-    background: linear-gradient(135deg, #124847 0%, #0d3938 100%);
+    background: linear-gradient(135deg, #165956 0%, #165956 100%);
     box-shadow: 0 0.625rem 1.5rem rgba(10, 36, 35, 0.25);
     cursor: pointer;
     font-size: clamp(1.3rem, 1.2vw, 1.7rem);
