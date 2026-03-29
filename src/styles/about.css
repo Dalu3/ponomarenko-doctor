@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    padding: 80px 32px;
+    padding: 150px 32px;
     background-image: url("../images/lines.png");
     background-size: cover;
 }
@@ -15,14 +15,31 @@
     gap: 30px;
     width: min(100%, 1200px);
     margin: 0 auto;
-    padding: 100px 0 250px;
+    padding: 0px 0 150px;
 }
 
-.about-text {
+.about-text,
+.experience-text {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.section-heading {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.section-copy {
+    font-size: 25px;
+    line-height: 1.4;
+}
+
+.section-copy-strong {
+    font-weight: 700;
+    color: #165956;
+    line-height: 1.25;
 }
 
 .about-title {
@@ -30,8 +47,6 @@
     display: block;
     margin: 0;
     color: #165956;
-    font-size: 40px;
-    font-weight: 700;
     text-align: center;
 }
 
@@ -54,12 +69,10 @@
 
 .about-subtitle {
     margin: 0;
-    font-size: 25px;
 }
 
 .about-description {
     margin: 0;
-    font-size: 25px;
 }
 
 .about-button {
@@ -81,14 +94,25 @@
     display: none;
 }
 
-.about-image {
+.about-image,
+.experience-image {
     position: relative;
     display: grid;
     place-items: center;
     justify-items: end;
-    flex: 1;
+    flex: 0 0 550px;
     min-height: 100%;
     color: inherit;
+}
+
+.about-photo-link,
+.experience-photo-link {
+    position: relative;
+    grid-area: 1 / 1;
+    z-index: 2;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
     text-decoration: none;
     cursor: pointer;
 }
@@ -100,13 +124,11 @@
     width: 350px;
     max-width: 100%;
     height: auto;
-    transform: translate(10%, 1%);
+    transform: translate(7%, 1%);
 }
 
 .about-photo {
-    position: relative;
-    grid-area: 1 / 1;
-    z-index: 2;
+    display: block;
     width: 100%;
     max-width: 400px;
     height: auto;
@@ -151,7 +173,8 @@
 }
 
 @media screen and (min-width: 1361px) {
-    .about-title {
+    .about-title,
+    .experience-title {
         width: 100%;
         align-self: flex-start;
         text-align: left;
@@ -160,20 +183,28 @@
     .about-image {
         transform: translateX(-24px);
     }
+
+    .experience-image {
+        transform: translateX(-12px);
+    }
 }
 
 @media screen and (max-width: 1360px) and (min-width: 981px) {
-    .about-container {
+    .about-container,
+    .experience-container {
         gap: 18px;
     }
 
-    .about-title {
+    .about-title,
+    .experience-title {
         width: 100%;
+        margin-bottom: 20px;
         align-self: flex-start;
         text-align: left;
     }
 
-    .about-text {
+    .about-text,
+    .experience-text {
         flex: 1.18;
     }
 
@@ -182,11 +213,17 @@
         transform: translateX(clamp(-34px, -2.8vw, -14px));
     }
 
+    .experience-image {
+        flex: 0.82;
+        transform: none;
+    }
+
     .subtract-image {
         width: clamp(295px, 27vw, 340px);
     }
 
-    .about-photo {
+    .about-photo,
+    .experience-photo {
         max-width: clamp(315px, 29vw, 370px);
     }
 }
@@ -197,14 +234,16 @@
         padding-right: 32px;
     }
 
-    .about-container {
+    .about-container,
+    .experience-container {
         flex-direction: column;
         align-items: center;
         gap: 32px;
         padding: 0;
     }
 
-    .about-text {
+    .about-text,
+    .experience-text {
         flex-basis: auto;
         width: 100%;
         max-width: none;
@@ -212,8 +251,18 @@
         gap: 28px;
     }
 
-    .about-title {
+    .about-title,
+    .experience-title {
         margin-bottom: 12px;
+    }
+
+    .about-title {
+        width: max-content;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+        text-align: center;
     }
 
     .about-button-desktop {
@@ -225,31 +274,73 @@
         margin: 0 auto;
     }
 
-    .about-image {
+    .about-image,
+    .experience-image {
+        flex: 0 0 auto;
         justify-items: center;
         width: min(100%, 460px);
         max-width: 460px;
+        min-height: auto;
         margin: 0 auto;
         transform: translateX(10px);
     }
 
     .subtract-image,
-    .about-photo {
+    .about-photo,
+    .subtract2-image,
+    .experience-photo {
         justify-self: center;
+    }
+
+    .experience-text {
+        order: 1;
+        align-self: stretch;
+    }
+
+    .experience-title {
+        width: max-content;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+        text-align: center;
+    }
+
+    .experience-image {
+        order: 2;
+        transform: none;
+        justify-items: start;
+        width: fit-content;
+        max-width: 100%;
+        margin: 0 auto;
+        align-self: center;
+    }
+
+    .experience-photo-link,
+    .subtract2-image,
+    .experience-photo {
+        justify-self: start;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .about-container {
-        gap: 22px;
+    .about-section {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: 32px;
+        padding-right: 32px;
     }
 
-    .about-title {
+    .about-container,
+    .experience-container {
+        gap: 0px;
+    }
+
+    .section-heading {
         font-size: 34px;
     }
 
-    .about-subtitle,
-    .about-description {
+    .section-copy {
         font-size: 20px;
     }
 
@@ -266,41 +357,44 @@
         width: min(66vw, 250px);
     }
 
-    .about-photo {
+    .about-photo,
+    .experience-photo {
         max-width: min(74vw, 285px);
+    }
+
+    .experience-image {
+        padding-right: clamp(24px, 11vw, 45px);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .about-image,
+    .experience-image {
+        margin-top: -48px;
+        padding-top: 80px;
     }
 }
 
 @media screen and (max-width: 470px) {
-    .about-title {
+    .section-heading {
         font-size: 30px;
     }
 
-    .about-subtitle,
-    .about-description {
+    .section-copy {
         font-size: 18px;
     }
 }
 
 @media screen and (max-width: 420px) {
     .about-section {
-        padding-top: 64px;
-        padding-bottom: 64px;
+        padding-top: 80px;
+        padding-bottom: 80px;
         padding-left: 32px;
         padding-right: 32px;
     }
 
-    .about-title {
-        font-size: 30px;
-    }
-
-    .about-subtitle,
     .about-description {
-        font-size: 18px;
-    }
-
-    .about-description {
-        margin-bottom: 28px;
+        margin-bottom: 0px;
     }
 
     .about-button {
@@ -309,10 +403,13 @@
     }
 
     .subtract-image {
-        width: min(78vw, 270px);
+        width: clamp(220px, 27vw, 340px);
     }
 
     .about-photo {
-        max-width: min(86vw, 300px);
+        max-width: clamp(250px, 29vw, 370px);
+    }
+    .about-text {
+        gap: 16px;
     }
 }

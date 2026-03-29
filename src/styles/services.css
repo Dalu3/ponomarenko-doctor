@@ -940,12 +940,22 @@
         .services-card-description {
             font-size: 15px;
         }
-    .services-card-title {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        padding-top: 0px;
-    }}
+        .services-card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding-top: 0px;
+        }}
+
+@media screen and (max-width: 600px) {
+    .services-section {
+        padding-top: 0;
+    }
+
+    .services-section-title {
+        margin-top: 0;
+    }
+}
 
 /* Unified button animation (same style as main hero button) */
 :is(.main-button, .header-button, .about-button, .contact-form button) {

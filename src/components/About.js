@@ -74,32 +74,36 @@ export default function About() {
             Працюю з дітьми та дорослими і завжди знаходжу індивідуальний підхід. Буду рада допомогти вам і стати вашим лікарем.
           </p>
         </div>
-        <a
-          className="about-image"
-          href={instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram лікаря"
-        >
+        <div className="about-image">
           <img src={subtract} alt="Background Shape" className="subtract-image"
            />
-           
-          <img src={photo} alt="Анастасія" className="about-photo" />
-        </a>
+
+          <a
+            className="about-photo-link"
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram лікаря"
+          >
+            <img src={photo} alt="Анастасія" className="about-photo" />
+          </a>
+        </div>
         
       </div>
     <div id="experience" className="experience-section">
       <div className="experience-container">
-        <a
-          className="experience-image"
-          href={instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram лікаря"
-        >
+        <div className="experience-image">
           <img src={subtract2} alt="Decorative Shape" className="subtract2-image" />
-          <img src={image} alt="Medical Equipment" className="experience-photo" />
-        </a>
+          <a
+            className="experience-photo-link"
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram лікаря"
+          >
+            <img src={image} alt="Medical Equipment" className="experience-photo" />
+          </a>
+        </div>
         <div className="experience-text">
           <h2 className="experience-title section-heading">
             Професійний <span className="experience-title-word">досвід</span>
@@ -129,7 +133,7 @@ export default function About() {
             <li className="experience-item">
               <span className="experience-item-title section-copy section-copy-strong">ТОВ «Валеолайф»</span>
               <span className="experience-item-role section-copy">
-                Посада: Лікар загальної практики — сімейний лікар
+                Посада: Лікар загальної практики сімейної медицини
               </span>
             </li>
           </ul>
