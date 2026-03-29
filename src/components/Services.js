@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ServicesCard from "./ServicesCard";
 import check from "../images/check.png";
 import heart from "../images/heart.png";
@@ -7,6 +7,32 @@ import home from "../images/home.png";
 import circle from "../images/circle.png"; // Import the circle icon
 
 const Services = () => {
+    const servicesRef = useRef(null);
+    const [shouldAnimate, setShouldAnimate] = useState(false);
+    const [isRevealed, setIsRevealed] = useState(false);
+
+    useEffect(() => {
+        if (!servicesRef.current || isRevealed) {
+            return undefined;
+        }
+
+        setShouldAnimate(true);
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsRevealed(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.18 }
+        );
+
+        observer.observe(servicesRef.current);
+
+        return () => observer.disconnect();
+    }, [isRevealed]);
+
     const serviceData = [
         {
             icon: check,
@@ -42,10 +68,16 @@ const Services = () => {
             <span className="title-underline"></span>
             <span className="title-right"> вам і вашій родині?</span>
         </h2>
-            <div className="services-container">
+            <div
+                ref={servicesRef}
+                className={`services-container${shouldAnimate ? " services-container-animate" : ""}${
+                    isRevealed ? " services-container-revealed" : ""
+                }`}
+            >
                 {serviceData.map((service, index) => (
                     <ServicesCard
                         key={index}
+                        index={index}
                         icon={service.icon}
                         circleIcon={service.circleIcon}
                         title={service.title}

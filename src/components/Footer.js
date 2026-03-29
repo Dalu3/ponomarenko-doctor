@@ -3,27 +3,82 @@ import emailjs from "@emailjs/browser";
 import inst from "../images/instagram.svg";
 import linkedin from "../images/linkedin.svg";
 
+const initialFormData = {
+    first_name: "",
+    last_name: "",
+    user_email: "",
+    message: "",
+};
+
+const allFieldsTouched = Object.keys(initialFormData).reduce((acc, field) => {
+    acc[field] = true;
+    return acc;
+}, {});
 
 const Footer = () => {
     const form = useRef();
     const currentYear = new Date().getFullYear();
     
     // Form state
-    const [formData, setFormData] = useState({
-        first_name: "",
-        last_name: "",
-        user_email: "",
-        message: "",
-    });
+    const [formData, setFormData] = useState(initialFormData);
+    const [errors, setErrors] = useState({});
+    const [touchedFields, setTouchedFields] = useState({});
 
     // Notification state for popup
     const [showPopup, setShowPopup] = useState(false);
     const [notification, setNotification] = useState("");
 
+    const validateField = (name, value) => {
+        const trimmedValue = value.trim();
+
+        switch (name) {
+            case "first_name":
+                return Boolean(trimmedValue);
+            case "last_name":
+                return Boolean(trimmedValue);
+            case "user_email":
+                return Boolean(trimmedValue) && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedValue);
+            case "message":
+                return Boolean(trimmedValue);
+            default:
+                return true;
+        }
+    };
+
+    const validateForm = (values) =>
+        Object.entries(values).reduce((acc, [fieldName, fieldValue]) => {
+            if (!validateField(fieldName, fieldValue)) {
+                acc[fieldName] = true;
+            }
+
+            return acc;
+        }, {});
+
     // Handle form input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+
+        if (touchedFields[name] || errors[name]) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                [name]: !validateField(name, value),
+            }));
+        }
+    };
+
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+
+        setTouchedFields((prevTouchedFields) => ({
+            ...prevTouchedFields,
+            [name]: true,
+        }));
+
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: !validateField(name, value),
+        }));
     };
 
     // Function to show the popup message
@@ -37,6 +92,15 @@ const Footer = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
+        const validationErrors = validateForm(formData);
+
+        setErrors(validationErrors);
+        setTouchedFields(allFieldsTouched);
+
+        if (Object.values(validationErrors).some(Boolean)) {
+            return;
+        }
+
         emailjs.sendForm(
             "service_tr9e4iv",
             "template_l0n6zzl",
@@ -47,8 +111,9 @@ const Footer = () => {
             showPopupMessage("Ваше повідомлення успішно надіслано!"); // Success message
 
             // Clear form data
-            setFormData({ first_name: "", last_name: "", user_email: "", message: "" });
-            form.current.reset();
+            setFormData(initialFormData);
+            setErrors({});
+            setTouchedFields({});
         })
         .catch(() => {
             showPopupMessage("Помилка відправлення. Будь ласка, спробуйте ще раз."); // Error message
@@ -83,76 +148,93 @@ const Footer = () => {
                             <img className="linkedin" src={linkedin} alt="LinkedIn" />
                         </a>
                     </div>
-
-                    <div className="copywrite copywrite--studio">
-                        <span className="copywrite-line">© {currentYear} Anastasiia Ponomarenko</span>
-                        <span className="copywrite-line">
-                            Built by{" "}
-                            <a
-                                href="https://dashly.studio/"
-                                className="copywrite-link copywrite-brand-link"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <span className="copywrite-brand">Dashly Studio</span>
-                            </a>
-                        </span>
-                    </div>
                 </div>
 
                 <div className="contact-form-container">
-                    <h2>Залиште мені повідомлення</h2>
-                    <form ref={form} onSubmit={sendEmail} className="contact-form">
+                    <h2>
+                        <span className="contact-form-title-default">Залиште повідомлення</span>
+                        <span className="contact-form-title-mobile">Залиште повідомлення</span>
+                    </h2>
+                    <form ref={form} onSubmit={sendEmail} className="contact-form" noValidate>
                         <div className="input-group">
-                            <div className="input-wrapper">
+                            <div className={`input-wrapper${errors.first_name ? " has-error" : ""}`}>
                                 <label htmlFor="first_name">Ім’я *</label>
                                 <input 
                                     type="text" 
                                     id="first_name" 
                                     name="first_name" 
+                                    placeholder="Вкажіть ім’я"
                                     value={formData.first_name}
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    aria-invalid={Boolean(errors.first_name)}
                                     required
                                 />
                             </div>
-                            <div className="input-wrapper">
+                            <div className={`input-wrapper${errors.last_name ? " has-error" : ""}`}>
                                 <label htmlFor="last_name">Прізвище *</label>
                                 <input 
                                     type="text" 
                                     id="last_name" 
                                     name="last_name" 
+                                    placeholder="Вкажіть прізвище"
                                     value={formData.last_name}
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    aria-invalid={Boolean(errors.last_name)}
                                     required
                                 />
                             </div>
                         </div>
 
-                        <div className="input-wrapper">
+                        <div className={`input-wrapper${errors.user_email ? " has-error" : ""}`}>
                             <label htmlFor="user_email">Пошта *</label>
                             <input 
                                 type="email" 
                                 id="user_email" 
                                 name="user_email" 
+                                placeholder="Вкажіть email"
                                 value={formData.user_email}
                                 onChange={handleChange}
+                                onBlur={handleBlur}
+                                aria-invalid={Boolean(errors.user_email)}
                                 required
                             />
                         </div>
 
-                        <div className="input-wrapper">
+                        <div className={`input-wrapper${errors.message ? " has-error" : ""}`}>
                             <label htmlFor="message">Повідомлення *</label>
                             <textarea 
                                 id="message" 
                                 name="message" 
+                                placeholder="Напишіть повідомлення"
                                 value={formData.message}
                                 onChange={handleChange}
+                                onBlur={handleBlur}
+                                aria-invalid={Boolean(errors.message)}
                                 required
                             ></textarea>
                         </div>
 
                         <button type="submit">Надіслати</button>
                     </form>
+                </div>
+            </div>
+
+            <div className="footer-bottom">
+                <div className="copywrite copywrite--studio">
+                    <span className="copywrite-line">© {currentYear} Anastasiia Ponomarenko</span>
+                    <span className="copywrite-line">
+                        Built by{" "}
+                        <a
+                            href="https://dashly.studio/"
+                            className="copywrite-link copywrite-brand-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <span className="copywrite-brand">Dashly Studio</span>
+                        </a>
+                    </span>
                 </div>
             </div>
         </footer>

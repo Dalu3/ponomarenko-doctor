@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    padding: 150px 32px;
+    padding: 100px 32px;
     background-image: url("../images/lines.png");
     background-size: cover;
 }
@@ -15,7 +15,7 @@
     gap: 30px;
     width: min(100%, 1200px);
     margin: 0 auto;
-    padding: 0px 0 150px;
+    padding: 0px 0 100px;
 }
 
 .about-text,
