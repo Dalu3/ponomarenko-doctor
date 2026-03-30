@@ -25,6 +25,18 @@ export default function Header() {
 
             const section = document.getElementById(targetId);
             if (section) {
+                if (targetId === "about") {
+                    const aboutOffset = window.innerWidth <= 600 ? 28 : 88;
+                    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+
+                    window.scrollTo({
+                        top: Math.max(sectionTop - aboutOffset, 0),
+                        behavior: "smooth",
+                    });
+
+                    return;
+                }
+
                 section.scrollIntoView({ behavior: "smooth" });
             }
         });
@@ -79,7 +91,7 @@ export default function Header() {
                     src={logo}
                     onClick={() => scrollToTarget("top")}
                     className="header-logo"
-                    alt="Logo"
+                    alt="Логотип лікаря Анастасії Олександрівни Пономаренко"
                 />
                 <button
                     type="button"

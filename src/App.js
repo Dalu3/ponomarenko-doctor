@@ -4,27 +4,30 @@ import Main from "./components/Main";
 import About from "./components/About";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
+import CookieBanner from "./components/CookieBanner";
 import "./styles/header.css";
 import "./styles/main.css";
 import "./styles/about.css";
 import "./styles/experience.css";
 import "./styles/footer.css";
 import "./styles/services.css";
+import "./styles/cookie-banner.css";
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        document.body.classList.add("app-loading");
+        if ("scrollRestoration" in window.history) {
+            window.history.scrollRestoration = "manual";
+        }
 
-        setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        }, 100);
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        document.body.classList.add("app-loading");
 
         const loaderTimer = window.setTimeout(() => {
             setIsLoading(false);
             document.body.classList.remove("app-loading");
-        }, 700);
+        }, 1000);
 
         return () => {
             window.clearTimeout(loaderTimer);
@@ -46,6 +49,7 @@ function App() {
             <About />
             <Services />
             <Footer />
+            <CookieBanner />
         </div>
     );
 }

@@ -221,6 +221,26 @@
     cursor: pointer;
 }
 
+.contact-form-consent {
+    margin: 14px 0 0;
+    color: rgba(18, 72, 70, 0.8);
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.contact-form-consent a,
+.contact-form-consent a:visited,
+.contact-form-consent a:active {
+    color: #165956;
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.contact-form-consent a:hover {
+    color: #124846;
+}
+
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -299,6 +319,9 @@
     .contact-form-container h2 {
         font-size: 34px;
     }
+    .footer {
+        padding: 0px 32px;
+    }
 
     .working-hours p {
         font-size: 22px;
@@ -323,6 +346,10 @@
         margin-top: 30px;
         padding: 15px 18px;
         font-size: 18px;
+    }
+
+    .contact-form-consent {
+        font-size: 13px;
     }
 
     .popup {
@@ -371,8 +398,17 @@
         font-size: 16px;
     }
 
+    .contact-form-consent {
+        text-align: left;
+    }
+
     .copywrite.copywrite--studio .copywrite-line {
         white-space: normal;
+    }
+
+    .copywrite.copywrite--studio {
+        font-size: 16px;
+        line-height: 1.35;
     }
 
     .contact-form-title-default {

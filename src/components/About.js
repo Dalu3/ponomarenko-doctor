@@ -10,13 +10,6 @@ export default function About() {
   const [isPhoneViewport, setIsPhoneViewport] = useState(false);
   const [isExperienceRevealed, setIsExperienceRevealed] = useState(false);
 
-  const scrollToSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 649px)");
     const updateViewportState = () => {
@@ -58,7 +51,7 @@ export default function About() {
     return () => observer.disconnect();
   }, [isPhoneViewport, isExperienceRevealed]);
   return (
-    <section id="about" className="about-section" lang="uk">
+    <section id="about" className="about-section" lang="uk" data-nosnippet>
       <div className="about-container">
         <div className="about-text">
                     <h2 className="about-title section-heading">
@@ -75,7 +68,7 @@ export default function About() {
           </p>
         </div>
         <div className="about-image">
-          <img src={subtract} alt="Background Shape" className="subtract-image"
+          <img src={subtract} alt="" aria-hidden="true" className="subtract-image"
            />
 
           <a
@@ -85,7 +78,7 @@ export default function About() {
             rel="noopener noreferrer"
             aria-label="Instagram лікаря"
           >
-            <img src={photo} alt="Анастасія" className="about-photo" />
+            <img src={photo} alt="Пономаренко Анастасія лікар Дніпро" className="about-photo" />
           </a>
         </div>
         
@@ -93,7 +86,7 @@ export default function About() {
     <div id="experience" className="experience-section">
       <div className="experience-container">
         <div className="experience-image">
-          <img src={subtract2} alt="Decorative Shape" className="subtract2-image" />
+          <img src={subtract2} alt="" aria-hidden="true" className="subtract2-image" />
           <a
             className="experience-photo-link"
             href={instagramUrl}
@@ -101,7 +94,7 @@ export default function About() {
             rel="noopener noreferrer"
             aria-label="Instagram лікаря"
           >
-            <img src={image} alt="Medical Equipment" className="experience-photo" />
+            <img src={image} alt="Медичні інструменти та книга" className="experience-photo" />
           </a>
         </div>
         <div className="experience-text">

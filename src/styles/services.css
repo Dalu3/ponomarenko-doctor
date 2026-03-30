@@ -70,11 +70,10 @@
     transition:
         opacity 0.65s ease,
         transform 0.65s ease;
-    transition-delay: calc(var(--service-card-index, 0) * 120ms);
     will-change: opacity, transform;
 }
 
-.services-container-revealed .services-card {
+.services-container-animate .services-card.services-card-visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -190,6 +189,14 @@
     .services-section-title {
         margin-top: 0;
     }
+
+    .services-card-title {
+        font-size: 20px;
+    }
+
+    .services-card-description {
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 470px) {
@@ -200,11 +207,11 @@
         font-size: 30px;
     }
     .services-card-title {
-        font-size: 25px;
+        font-size: 22px;
     }
 
     .services-card-description {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 @media screen and (max-width: 404px) {
@@ -213,7 +220,7 @@
         gap: 0px;
     }
     .services-card-title {
-        font-size: 23px;
+        font-size: 20px;
     }
     .title-underline {
         display: none;

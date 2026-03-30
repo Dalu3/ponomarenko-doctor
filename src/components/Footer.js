@@ -122,7 +122,7 @@ const Footer = () => {
     };
 
     return (
-        <footer id="footer" className="footer">
+        <footer id="footer" className="footer" data-nosnippet>
             {/* Popup Notification */}
             {showPopup && (
                 <div className="popup-overlay">
@@ -141,11 +141,11 @@ const Footer = () => {
                     <p className="note">Консультації на дому проводяться за попередньою домовленістю.</p>
 
                     <div className="footer-icons-div">
-                        <a href="https://www.instagram.com/pediatr.a?igsh=ZXI5NzhjcmE4eDg5" target="_blank" rel="noopener noreferrer">
-                            <img className="instagram" src={inst} alt="Instagram" />
+                        <a href="https://www.instagram.com/pediatr.a?igsh=ZXI5NzhjcmE4eDg5" target="_blank" rel="noopener noreferrer" aria-label="Instagram Анастасії Пономаренко">
+                            <img className="instagram" src={inst} alt="Instagram Анастасії Пономаренко" />
                         </a>
-                        <a href="https://www.linkedin.com/in/%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D1%96%D1%8F-%D0%BF%D0%BE%D0%BD%D0%BE%D0%BC%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE-46260234b/" target="_blank" rel="noopener noreferrer">
-                            <img className="linkedin" src={linkedin} alt="LinkedIn" />
+                        <a href="https://www.linkedin.com/in/%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D1%96%D1%8F-%D0%BF%D0%BE%D0%BD%D0%BE%D0%BC%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE-46260234b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Анастасії Пономаренко">
+                            <img className="linkedin" src={linkedin} alt="LinkedIn Анастасії Пономаренко" />
                         </a>
                     </div>
                 </div>
@@ -217,6 +217,17 @@ const Footer = () => {
                         </div>
 
                         <button type="submit">Надіслати</button>
+                        <p className="contact-form-consent">
+                            Натискаючи кнопку, ви надаєте згоду на обробку
+                            персональних даних згідно з{" "}
+                            <a
+                                href="/privacy-policy.html"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Політики конфіденційності
+                            </a>
+                        </p>
                     </form>
                 </div>
             </div>

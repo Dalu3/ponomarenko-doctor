@@ -27,7 +27,7 @@ export default function Main() {
                 </p>
                 <button className="main-button" onClick={() => scrollToSection("footer")}>
                     <span className="main-button-label-desktop">Зв’язатися зі мною</span>
-                    <span className="main-button-label-mobile">Записатися на прийом</span>
+                    <span className="main-button-label-mobile">Зв’язатися зі мною</span>
                 </button>
             </div>
         </main>
