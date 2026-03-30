@@ -1,4 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+Host: anastasiiaponomarenko.com
 Sitemap: https://anastasiiaponomarenko.com/sitemap.xml
