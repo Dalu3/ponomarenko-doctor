@@ -70,10 +70,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: radial-gradient(
-                    circle at center,
-                    rgba(237, 253, 252, 0.98) 0%,
-                    #dff4f2 100%
+                background: linear-gradient(
+                    180deg,
+                    #edfdfc 0%,
+                    #e9f9f7 100%
                 );
                 opacity: 1;
                 pointer-events: auto;
@@ -651,6 +651,12 @@
         <script>
             (function () {
                 var loader = document.querySelector(".app-loader");
+
+                if ("scrollRestoration" in window.history) {
+                    window.history.scrollRestoration = "manual";
+                }
+
+                window.scrollTo(0, 0);
 
                 if (!loader) {
                     return;
