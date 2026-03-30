@@ -129,17 +129,24 @@ button {
 }
 
 .header-button {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     font-size: 18px;
     color: white;
-    background-color: #165956;
+    background: linear-gradient(135deg, #165956 0%, #165956 100%);
     border: none;
     padding: 14px 34px;
     border-radius: 50px;
+    box-shadow: 0 0.625rem 1.5rem rgba(10, 36, 35, 0.25);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    isolation: isolate;
+    transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        background-position 0.35s ease;
     font-weight: 600;
     line-height: 1.1;
     text-wrap: nowrap;
@@ -147,6 +154,44 @@ button {
     overflow-wrap: normal;
     word-break: keep-all;
     hyphens: none;
+}
+
+.header-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    z-index: 0;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+        100deg,
+        rgba(255, 255, 255, 0) 10%,
+        rgba(255, 255, 255, 0.2) 45%,
+        rgba(255, 255, 255, 0) 90%
+    );
+    pointer-events: none;
+    transform: skewX(-20deg);
+    transition: left 0.55s ease;
+}
+
+.header-button:hover {
+    transform: translateY(-0.1875rem);
+    box-shadow: 0 1rem 2rem rgba(10, 36, 35, 0.35);
+}
+
+.header-button:hover::before {
+    left: 140%;
+}
+
+.header-button:active {
+    transform: translateY(-0.0625rem);
+    box-shadow: 0 0.5rem 1.125rem rgba(10, 36, 35, 0.28);
+}
+
+.header-button:focus-visible {
+    outline: 0.125rem solid rgba(22, 89, 86, 0.24);
+    outline-offset: 0.1875rem;
 }
 
 /* Responsive Styles */

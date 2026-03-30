@@ -3,8 +3,15 @@ import React from "react";
 export default function Main() {
     const scrollToSection = (id) => {
         const section = document.getElementById(id);
+
         if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
+            const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+            const extraOffset = window.innerWidth <= 600 ? -84 : 1;
+
+            window.scrollTo({
+                top: sectionTop + extraOffset,
+                behavior: "smooth",
+            });
         }
     };
 
