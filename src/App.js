@@ -24,13 +24,45 @@ function App() {
         window.scrollTo({ top: 0, left: 0, behavior: "auto" });
         document.body.classList.add("app-loading");
 
-        const loaderTimer = window.setTimeout(() => {
+        const MIN_LOADER_MS = 1000; // loader is shown at least this long
+        const MAX_LOADER_MS = 10000; // safety cap if some resource hangs
+
+        let cancelled = false;
+        let maxTimer;
+
+        const minDelay = new Promise((resolve) =>
+            window.setTimeout(resolve, MIN_LOADER_MS)
+        );
+
+        // Resolves when all images, styles and scripts have loaded
+        const pageLoaded = new Promise((resolve) => {
+            if (document.readyState === "complete") {
+                resolve();
+            } else {
+                window.addEventListener("load", resolve, { once: true });
+            }
+        });
+
+        const fontsLoaded =
+            document.fonts && document.fonts.ready
+                ? document.fonts.ready.catch(() => {})
+                : Promise.resolve();
+
+        const ready = Promise.all([minDelay, pageLoaded, fontsLoaded]);
+        const safetyCap = new Promise((resolve) => {
+            maxTimer = window.setTimeout(resolve, MAX_LOADER_MS);
+        });
+
+        Promise.race([ready, safetyCap]).then(() => {
+            if (cancelled) return;
+            window.clearTimeout(maxTimer);
             setIsLoading(false);
             document.body.classList.remove("app-loading");
-        }, 1000);
+        });
 
         return () => {
-            window.clearTimeout(loaderTimer);
+            cancelled = true;
+            window.clearTimeout(maxTimer);
             document.body.classList.remove("app-loading");
         };
     }, []);
