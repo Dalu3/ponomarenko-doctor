@@ -1,3 +1,63 @@
+/* Shared page layout: every section's content lines up with these edges */
+:root {
+  /* fluid side margin: 20px on phones, grows with the screen, max 80px */
+  --page-gutter: clamp(20px, 5vw, 80px);
+  /* content column on wide monitors */
+  --page-max-width: 1200px;
+  --page-inline: max(var(--page-gutter), calc((100% - var(--page-max-width)) / 2));
+  /* header is wider than the content column */
+  --header-max-width: 1440px;
+  --header-inline: max(var(--page-gutter), calc((100% - var(--header-max-width)) / 2));
+}
+
+/* Typography system: the only place font sizes are defined.
+   Components use var(--fs-*), var(--fw-*), var(--lh-*). */
+:root {
+  --font-main: "Raleway", sans-serif;
+
+  --fs-display: 64px;  /* hero name */
+  --fs-h2: 34px;       /* section titles */
+  --fs-h3: 28px;       /* card titles, modal titles */
+  --fs-text-l: 24px;   /* hero lead, section body copy */
+  --fs-text-m: 20px;   /* buttons, form, card descriptions */
+  --fs-text-s: 18px;   /* nav, header button, popup */
+  --fs-text-xs: 16px;  /* cookie copy */
+  --fs-caption: 14px;  /* consent, badges, eyebrows */
+
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.15;
+  --lh-heading: 1.2;
+  --lh-button: 1.2;
+  --lh-text: 1.4;
+  --lh-small: 1.5;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --fs-display: 48px;
+    --fs-h2: 30px;
+    --fs-h3: 24px;
+    --fs-text-l: 20px;
+    --fs-text-m: 18px;
+    --fs-text-s: 16px;
+    --fs-text-xs: 14px;
+    --fs-caption: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --fs-display: 40px;
+    --fs-h2: 26px;
+    --fs-h3: 22px;
+    --fs-text-l: 18px;
+    --fs-text-m: 16px;
+  }
+}
+
 body {
   margin: 0;
   background-color: #edfdfc;

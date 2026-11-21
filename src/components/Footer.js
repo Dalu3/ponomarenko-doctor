@@ -170,7 +170,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="contact-form-container">
+                <div id="contact-form" className="contact-form-container">
                     <h2>
                         <span className="contact-form-title-default">Залиште повідомлення</span>
                         <span className="contact-form-title-mobile">Залиште повідомлення</span>

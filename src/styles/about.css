@@ -63,6 +63,8 @@
 .about-subtitle,
 .about-description {
     color: #124846;
+    font-size: 18px;
+    line-height: var(--lh-small);
     text-align: justify;
     text-justify: inter-word;
 }
@@ -410,5 +412,12 @@
     }
     .about-text {
         gap: 16px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .about-subtitle,
+    .about-description {
+        font-size: 16px;
     }
 }
