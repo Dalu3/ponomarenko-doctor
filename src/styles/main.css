@@ -5,7 +5,7 @@
     justify-content: flex-start;
     min-height: 100vh;
     max-width: 100%;
-    padding: 285px 0 0 150px;
+    padding: 285px var(--page-inline) 0;
     text-align: left;
     background-image: url("../images/background.png");
     background-size: cover;
@@ -22,27 +22,25 @@
 
 .main-title {
     margin: 0;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: var(--fs-display);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
 }
 
 .main-subtitle {
     margin: 0 0 0.9375rem;
-    font-size: 1.8rem;
-    font-weight: 400;
+    font-size: var(--fs-text-l);
+    font-weight: var(--fw-regular);
 }
 
 .main-description {
+    max-width: 40rem;
     margin: 0.9375rem 0 0;
-    font-size: 1.8rem;
-    font-weight: 400;
+    font-size: var(--fs-text-l);
+    font-weight: var(--fw-regular);
 }
 
-.main-subtitle-mobile,
-.main-title-mobile,
-.main-description-mobile,
-.main-button-label-mobile {
+.main-description-short {
     display: none;
 }
 
@@ -62,10 +60,10 @@
     background: linear-gradient(135deg, #165956 0%, #165956 100%);
     box-shadow: 0 0.625rem 1.5rem rgba(10, 36, 35, 0.25);
     cursor: pointer;
-    font-size: clamp(1.3rem, 1.2vw, 1.7rem);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
+    font-size: var(--fs-text-m);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-button);
+    text-decoration: none;
     white-space: nowrap;
     isolation: isolate;
     transition:
@@ -119,7 +117,7 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 90%;
-    max-width: 75rem;
+    max-width: var(--page-max-width);
     margin: 0 auto;
 }
 
@@ -129,7 +127,7 @@
         align-items: center;
         justify-content: center;
         min-height: 80vh;
-        padding: 16rem 10% 0;
+        padding: 16rem var(--page-gutter) 0;
         text-align: center;
         background-position: 35%;
     }
@@ -144,23 +142,18 @@
         display: none;
     }
 
-    .main-title {
-        font-size: clamp(2.9rem, 4vw, 4rem);
-    }
-
     .main-subtitle {
         margin-bottom: 1.25rem;
-        font-size: clamp(1.5rem, 2vw, 2.1rem);
     }
 
     .main-description {
-        font-size: clamp(1.4rem, 2vw, 2rem);
+        margin-right: auto;
+        margin-left: auto;
     }
 
     .main-button {
         min-width: 13.75rem;
         padding: 0.8125rem 1.75rem;
-        font-size: clamp(1rem, 1.6vw, 1.4rem);
     }
 }
 
@@ -169,7 +162,7 @@
         align-items: center;
         justify-content: center;
         min-height: 100svh;
-        padding: 7rem 1.25rem 2.5rem;
+        padding: 7rem var(--page-gutter) 2.5rem;
         text-align: center;
         background-position: 68% 30%;
         overflow: hidden;
@@ -192,8 +185,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: min(100%, 20rem);
-        max-width: 20rem;
+        width: 100%;
+        max-width: 32rem;
         margin: 0 auto;
         padding: 0;
         transform: none;
@@ -206,42 +199,34 @@
     }
 
     .main-subtitle {
-        max-width: 15rem;
-        font-size: 1.2rem;
-        padding-bottom: 25px;
-        font-weight: 500;
-        line-height: 1.4;
-        letter-spacing: 0.03em;
+        max-width: 100%;
+        padding-bottom: 20px;
         text-wrap: balance;
     }
 
     .main-title {
-        max-width: 18.5rem;
-        font-size: 2.5rem;
-        font-weight: 700;
+        max-width: 100%;
+        font-size: clamp(28px, 8.6vw, 40px);
+        font-weight: var(--fw-bold);
         text-wrap: balance;
-        padding-bottom: 10px;
+        padding-bottom: 20px;
     }
 
     .main-description {
-        max-width: 17.5rem;
-        font-size: 1.2rem;
-        font-weight: 500;
+        max-width: 21rem;
         text-wrap: balance;
         padding-bottom: 40px;
     }
 
-    .main-subtitle-desktop,
-    .main-title-desktop,
-    .main-description-desktop,
-    .main-button-label-desktop {
+    .responsive-break {
+        display: inline;
+    }
+
+    .main-description-full {
         display: none;
     }
 
-    .main-subtitle-mobile,
-    .main-title-mobile,
-    .main-description-mobile,
-    .main-button-label-mobile {
+    .main-description-short {
         display: inline;
     }
 
@@ -249,12 +234,6 @@
         min-width: 13.75rem;
         margin-top: 0.3125rem;
         padding: 0.9375rem 1.625rem;
-        font-size: 1rem;
     }
 }
 
-@media screen and (min-width: 1600px) {
-    .main-section {
-        padding-left: clamp(16.25rem, 18vw, 32.5rem);
-    }
-}

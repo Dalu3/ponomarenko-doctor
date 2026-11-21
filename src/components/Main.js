@@ -1,41 +1,33 @@
 import React from "react";
 
+const BOOKING_URL = "https://helsi.me/doctor/78c465a1-8408-4997-bb04-3588bcfa2087";
+
 export default function Main() {
-    const scrollToSection = (id) => {
-        const section = document.getElementById(id);
-
-        if (section) {
-            const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-            const extraOffset = window.innerWidth <= 600 ? -84 : 1;
-
-            window.scrollTo({
-                top: sectionTop + extraOffset,
-                behavior: "smooth",
-            });
-        }
-    };
-
     return (
         <main className="main-section">
             <div className="main-content">
-                <p className="main-subtitle">
-                    <span className="main-subtitle-desktop">Професійна медична допомога</span>
-                    <span className="main-subtitle-mobile">Для дітей і дорослих</span>
-                </p>
+                <p className="main-subtitle">Педіатр і сімейний лікар у Дніпрі</p>
                 <h1 className="main-title">
-                    <span className="main-title-desktop">
-                        Пономаренко <span className="responsive-break"><br></br></span>Анастасія Олександрівна
-                    </span>
-                    <span className="main-title-mobile">Анастасія Пономаренко</span>
+                    Пономаренко <br className="responsive-break" />
+                    Анастасія Олександрівна
                 </h1>
                 <p className="main-description">
-                    <span className="main-description-desktop">Педіатр · Лікар загальної практики сімейної медицини</span>
-                    <span className="main-description-mobile">Педіатр · Сімейний лікар</span>
+                    <span className="main-description-full">
+                        Допомагаю дітям і дорослим: прийом за декларацією НСЗУ, приватні й
+                        онлайн-консультації, візити додому.
+                    </span>
+                    <span className="main-description-short">
+                        Приймаю дітей і дорослих:<br />за декларацією, онлайн і вдома.
+                    </span>
                 </p>
-                <button className="main-button" onClick={() => scrollToSection("footer")}>
-                    <span className="main-button-label-desktop">Зв’язатися зі мною</span>
-                    <span className="main-button-label-mobile">Зв’язатися зі мною</span>
-                </button>
+                <a
+                    className="main-button"
+                    href={BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Записатися на прийом
+                </a>
             </div>
         </main>
     );
