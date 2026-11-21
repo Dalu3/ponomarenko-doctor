@@ -1,0 +1,216 @@
+.faq-section {
+    /* Content is pinned to the top so opening an answer grows the list
+       downwards instead of re-centering (and moving) the whole block. */
+    min-height: 100vh;
+    min-height: 100svh;
+    box-sizing: border-box;
+    padding: 140px var(--page-gutter) 80px;
+    background-color: #edfdfc;
+    color: #165956;
+}
+
+.faq-container {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: 56px;
+    align-items: start;
+    width: min(100%, var(--page-max-width));
+    margin: 0 auto;
+}
+
+.faq-media {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 24px;
+}
+
+.faq-image {
+    display: block;
+    width: min(100%, 300px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 8px solid #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 24px 48px rgba(10, 36, 35, 0.16);
+    transform: rotate(-6deg);
+}
+
+.faq-title {
+    margin: 0 0 12px;
+    text-align: left;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(22, 89, 86, 0.2);
+}
+
+.faq-question-heading {
+    margin: 0;
+    font-size: var(--fs-text-m);
+    font-weight: var(--fw-semibold);
+    line-height: 1.35;
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 16px 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.faq-question:focus-visible {
+    outline: 2px solid #165956;
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+/* Minimal plus that rotates into a cross */
+.faq-icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    transition: transform 0.35s ease;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 1.5px;
+    border-radius: 2px;
+    background-color: #165956;
+    transform: translate(-50%, -50%);
+}
+
+.faq-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-item.is-open .faq-icon {
+    transform: rotate(45deg);
+}
+
+/* Smooth height animation via grid rows */
+.faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+}
+
+.faq-item.is-open .faq-answer {
+    grid-template-rows: 1fr;
+}
+
+.faq-answer-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.faq-answer p {
+    margin: 0;
+    padding: 0 40px 16px 0;
+    color: #1f3b3a;
+    font-size: var(--fs-text-s);
+    line-height: 1.55;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.faq-item.is-open .faq-answer p {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faq-answer,
+    .faq-answer p,
+    .faq-icon {
+        transition: none;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .faq-section {
+        min-height: 0;
+        padding-top: 80px;
+    }
+
+    .faq-media {
+        margin-top: 0;
+    }
+
+    .faq-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .faq-image {
+        width: min(100%, 260px);
+    }
+
+    .faq-title {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .faq-section {
+        padding: 60px var(--page-gutter);
+    }
+
+    .faq-media {
+        padding: 12px;
+    }
+
+    .faq-image {
+        width: min(70%, 220px);
+        border-width: 6px;
+    }
+
+    .faq-title {
+        margin-bottom: 8px;
+    }
+
+    .faq-question {
+        padding: 14px 0;
+        gap: 14px;
+    }
+
+    .faq-answer p {
+        padding: 0 0 14px;
+        font-size: 14px;
+        line-height: 1.55;
+    }
+
+    .faq-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+        width: 12px;
+        height: 1.25px;
+    }
+}

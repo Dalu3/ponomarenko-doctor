@@ -142,7 +142,7 @@ const Footer = () => {
     };
 
     return (
-        <footer id="footer" className="footer" data-nosnippet>
+        <footer id="footer" className="footer">
             {/* Popup Notification */}
             {showPopup && (
                 <div className="popup-overlay">
@@ -153,12 +153,52 @@ const Footer = () => {
             )}
 
             <div className="footer-content">
-                <div className="working-hours">
-                    <h2 className="footer-title">Робочі години</h2>
-                    <p><span className="day">Понеділок, середа, п’ятниця:</span> <span className="time">9:00 – 13:00</span></p>
-                    <p><span className="day">Вівторок, четвер:</span> <span className="time">14:00 – 18:00</span></p>
-                    <p><span className="day">Онлайн-консультації:</span> <span className="time">9:00 – 20:00</span></p>
-                    <p className="note">Консультації на дому проводяться за попередньою домовленістю.</p>
+                <div className="footer-info">
+                    <section className="footer-block">
+                        <h2 className="footer-title">Робочі години</h2>
+                        <ul className="footer-schedule">
+                            <li>
+                                <span className="day">Понеділок, середа, п’ятниця</span>
+                                <span className="time">9:00 – 13:00</span>
+                            </li>
+                            <li>
+                                <span className="day">Вівторок, четвер</span>
+                                <span className="time">14:00 – 18:00</span>
+                            </li>
+                            <li>
+                                <span className="day">Онлайн-консультації</span>
+                                <span className="time">9:00 – 20:00</span>
+                            </li>
+                        </ul>
+                        <p className="footer-note">Консультації на дому проводяться за попередньою домовленістю.</p>
+                    </section>
+
+                    <section className="footer-block">
+                        <h2 className="footer-title">Адреса та запис</h2>
+                        <address className="footer-address-body">
+                            <p className="footer-address-name">Медичний центр «Валео»</p>
+                            <p>вул. Робоча, 148, Дніпро</p>
+                            <p>
+                                <a className="footer-phone" href="tel:+380982323401">+38 (098) 232-34-01</a>
+                            </p>
+                        </address>
+                        <div className="footer-links">
+                            <a
+                                href="https://www.google.com/maps?cid=12961065560228267002"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Відкрити на карті
+                            </a>
+                            <a
+                                href="https://helsi.me/doctor/78c465a1-8408-4997-bb04-3588bcfa2087"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Записатися через Helsi
+                            </a>
+                        </div>
+                    </section>
 
                     <div className="footer-icons-div">
                         <a href="https://www.instagram.com/pediatr.a?igsh=ZXI5NzhjcmE4eDg5" target="_blank" rel="noopener noreferrer" aria-label="Instagram Анастасії Пономаренко">
@@ -171,10 +211,7 @@ const Footer = () => {
                 </div>
 
                 <div id="contact-form" className="contact-form-container">
-                    <h2>
-                        <span className="contact-form-title-default">Залиште повідомлення</span>
-                        <span className="contact-form-title-mobile">Залиште повідомлення</span>
-                    </h2>
+                    <h2>Залиште повідомлення</h2>
                     <form ref={form} onSubmit={sendEmail} className="contact-form" noValidate>
                         <div className="input-group">
                             <div className={`input-wrapper${errors.first_name ? " has-error" : ""}`}>
@@ -240,11 +277,7 @@ const Footer = () => {
                         <p className="contact-form-consent">
                             Натискаючи кнопку, ви надаєте згоду на обробку
                             персональних даних згідно з{" "}
-                            <a
-                                href="/privacy-policy.html"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
+                            <a href="/privacy-policy.html">
                                 Політики конфіденційності
                             </a>
                         </p>

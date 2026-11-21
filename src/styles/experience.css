@@ -6,11 +6,11 @@
 }
 
 .experience-container {
-    font-family: "Raleway", sans-serif;
+    font-family: var(--font-main);
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    width: min(100%, 1200px);
+    width: min(100%, var(--page-max-width));
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -87,8 +87,8 @@
 
 .experience-list li::before {
     content: "›";
-    font-size: clamp(24px, 2.5vw, 30px);
-    font-weight: bold;
+    font-size: var(--fs-h3);
+    font-weight: var(--fw-bold);
     color: #165956;
     position: absolute;
     left: 0;
@@ -213,5 +213,186 @@
     .experience-photo {
         max-width: clamp(250px, 29vw, 370px);
         transform: translate(18%, 1%);
+    }
+}
+
+/* ---------------------------------------------------------------
+   About + Experience: one layout, mirrored.
+   Same column widths, same gaps, photo shifted by the same amount
+   (about → left of its frame, experience → right of its frame).
+   --------------------------------------------------------------- */
+@media screen and (min-width: 981px) {
+    .about-section {
+        --photo-shift: 64px;
+        --block-gap: 24px;
+    }
+
+    .about-container,
+    .experience-container {
+        gap: clamp(18px, 2vw, 30px);
+        padding-bottom: 0;
+    }
+
+    .experience-section {
+        margin-top: 120px;
+    }
+
+    .about-image,
+    .experience-image {
+        transform: none;
+    }
+
+    .subtract-image,
+    .subtract2-image {
+        transform: translate(0, 1%);
+    }
+
+    .about-photo {
+        transform: translate(calc(-1 * var(--photo-shift)), 1%);
+    }
+
+    .experience-photo {
+        transform: translate(var(--photo-shift), 1%);
+    }
+
+    /* text block (heading + copy) sits at the vertical centre of the photo */
+    .about-container .about-text,
+    .experience-container .experience-text {
+        gap: var(--block-gap);
+        justify-content: center;
+    }
+
+    .about-title,
+    .experience-title {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 1360px) and (min-width: 981px) {
+    .subtract2-image {
+        width: clamp(295px, 27vw, 340px);
+    }
+}
+
+/* Experience list as a timeline: ring markers joined by a thin line */
+.experience-list {
+    --item-gap: 24px;
+    --marker: 14px;
+    /* centre the marker on the first line of the item title */
+    --marker-top: calc((var(--fs-text-l) * 1.25 - var(--marker)) / 2);
+}
+
+.experience-list li {
+    position: relative;
+    margin-bottom: var(--item-gap);
+    padding-left: 36px;
+}
+
+.experience-list li:last-child {
+    margin-bottom: 0;
+}
+
+.experience-list li::before {
+    content: "";
+    position: absolute;
+    top: var(--marker-top);
+    left: 0;
+    z-index: 1;
+    width: var(--marker);
+    height: var(--marker);
+    box-sizing: border-box;
+    border: 3px solid #165956;
+    border-radius: 50%;
+    background-color: #edfdfc;
+}
+
+.experience-list li::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--marker-top) + var(--marker) + 4px);
+    bottom: calc(-1 * (var(--item-gap) + var(--marker-top) - 4px));
+    left: calc(var(--marker) / 2 - 1px);
+    width: 2px;
+    border-radius: 2px;
+    background-color: rgba(22, 89, 86, 0.25);
+}
+
+.experience-list li:last-child::after {
+    display: none;
+}
+
+.experience-item-title {
+    margin-bottom: 4px;
+}
+
+@media screen and (max-width: 980px) {
+    .experience-list {
+        --item-gap: 16px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .experience-list {
+        --marker: 12px;
+    }
+
+    .experience-list li {
+        padding-left: 28px;
+    }
+}
+
+/* Scroll reveal: each timeline item slides in from the left */
+.experience-item-reveal {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition:
+        opacity 0.6s ease,
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.experience-item-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+.experience-item-reveal:nth-child(2) { transition-delay: 0.08s; }
+.experience-item-reveal:nth-child(3) { transition-delay: 0.16s; }
+.experience-item-reveal:nth-child(4) { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .experience-item-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* job role lines match the About copy size (20px, 16px on phones) */
+.experience-item-role {
+    display: block;
+    font-size: 20px;
+    line-height: var(--lh-small);
+}
+
+@media screen and (max-width: 600px) {
+    .experience-item-role {
+        font-size: 16px;
+    }
+}
+
+/* place names: 20px (18px on phones); timeline markers re-centred on them */
+.experience-list {
+    --title-size: 20px;
+    --marker-top: calc((var(--title-size) * 1.25 - var(--marker)) / 2);
+}
+
+.experience-item-title {
+    font-size: var(--title-size);
+}
+
+@media screen and (max-width: 600px) {
+    .experience-list {
+        --title-size: 18px;
     }
 }

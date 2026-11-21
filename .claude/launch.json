@@ -1,0 +1,41 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ponomarenko",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "PORT=3005 BROWSER=none npx react-scripts start"
+      ],
+      "port": 3005
+    },
+    {
+      "name": "ponomarenko-alt",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "PORT=3006 BROWSER=none npx react-scripts start"
+      ],
+      "port": 3006
+    },
+    {
+      "name": "ponomarenko-typo",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "PORT=3007 BROWSER=none npx react-scripts start"
+      ],
+      "port": 3007
+    },
+    {
+      "name": "ponomarenko-seo",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "PORT=3008 BROWSER=none npx react-scripts start"
+      ],
+      "port": 3008
+    }
+  ]
+}

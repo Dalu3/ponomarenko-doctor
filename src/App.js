@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import About from "./components/About";
 import Services from "./components/Services";
+import Faq from "./components/Faq";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
 import "./styles/header.css";
@@ -11,6 +12,7 @@ import "./styles/about.css";
 import "./styles/experience.css";
 import "./styles/footer.css";
 import "./styles/services.css";
+import "./styles/faq.css";
 import "./styles/cookie-banner.css";
 
 function App() {
@@ -80,6 +82,7 @@ function App() {
             <Main />
             <About />
             <Services />
+            <Faq />
             <Footer />
             <CookieBanner />
         </div>

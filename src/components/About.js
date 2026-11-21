@@ -1,70 +1,64 @@
 import React, { useEffect, useRef, useState } from "react";
-import photo from "../images/photo.jpg";
+import photo from "../images/ponomarenko-pediatr-portret.jpg";
 import subtract from "../images/Subtract.png";
-import image from "../images/image-book.jpg";
+import image from "../images/medychnyi-dovidnyk-rentgen.jpg";
 import subtract2 from "../images/Subtract2.png";
 
 export default function About() {
   const instagramUrl = "https://www.instagram.com/pediatr.a?igsh=ZXI5NzhjcmE4eDg5";
   const experienceListRef = useRef(null);
-  const [isPhoneViewport, setIsPhoneViewport] = useState(false);
-  const [isExperienceRevealed, setIsExperienceRevealed] = useState(false);
+  const [visibleItems, setVisibleItems] = useState([]);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 649px)");
-    const updateViewportState = () => {
-      setIsPhoneViewport(mediaQuery.matches);
-    };
-
-    updateViewportState();
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", updateViewportState);
-    } else {
-      mediaQuery.addListener(updateViewportState);
+    const list = experienceListRef.current;
+    if (!list) {
+      return undefined;
     }
 
-    return () => {
-      if (mediaQuery.removeEventListener) {
-        mediaQuery.removeEventListener("change", updateViewportState);
-      } else {
-        mediaQuery.removeListener(updateViewportState);
-      }
-    };
-  }, []);
+    const items = Array.from(list.querySelectorAll(".experience-item"));
+    const showAll = () => setVisibleItems(items.map((_, index) => index));
 
-  useEffect(() => {
-    if (!isPhoneViewport || isExperienceRevealed || !experienceListRef.current) {
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      showAll();
       return undefined;
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsExperienceRevealed(true);
-          observer.disconnect();
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          const index = items.indexOf(entry.target);
+          setVisibleItems((prev) => (prev.includes(index) ? prev : [...prev, index]));
+          observer.unobserve(entry.target);
+        });
       },
-      { threshold: 0.2 }
+      { threshold: 0.35, rootMargin: "0px 0px -8% 0px" }
     );
 
-    observer.observe(experienceListRef.current);
+    items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
-  }, [isPhoneViewport, isExperienceRevealed]);
+  }, []);
+
+  const itemClass = (index) =>
+    `experience-item experience-item-reveal${visibleItems.includes(index) ? " is-visible" : ""}`;
+
   return (
-    <section id="about" className="about-section" lang="uk" data-nosnippet>
+    <section id="about" className="about-section" lang="uk">
       <div className="about-container">
         <div className="about-text">
                     <h2 className="about-title section-heading">
                         Мене звати <span className="about-title-name">Анастасія</span>
                     </h2>
           <p className="about-description section-copy">
-            Я лікар-педіатр та лікар загальної практики сімейної медицини із
-            5-річним досвідом.
+            Я лікар-педіатр і лікар загальної практики сімейної медицини. У 2018 році закінчила Дніпропетровську державну медичну академію, пройшла інтернатуру з педіатрії та спеціалізацію із загальної практики сімейної медицини.
           </p>
-          <p className="about-description section-copy">
-              Закінчила Дніпропетровську державну медичну академію у 2018 році, завершила інтернатуру зі спеціальності «Педіатрія» та пройшла курси спеціалізації «Загальна практика сімейної медицини».    </p>
           <p className="about-subtitle section-copy">
-            Працюю з дітьми та дорослими і завжди знаходжу індивідуальний підхід. Буду рада допомогти вам і стати вашим лікарем.
+            Веду прийом у медичному центрі «Валео» на вул. Робочій, 148 у Дніпрі. Спостерігаю дітей від народження, лікую дорослих і до кожного пацієнта шукаю індивідуальний підхід. Буду рада стати лікарем для всієї вашої родини.
           </p>
         </div>
         <div className="about-image">
@@ -94,36 +88,31 @@ export default function About() {
             rel="noopener noreferrer"
             aria-label="Instagram лікаря"
           >
-            <img src={image} alt="Медичні інструменти та книга" className="experience-photo" />
+            <img src={image} alt="Лікар гортає медичний довідник із рентгенівськими знімками" className="experience-photo" />
           </a>
         </div>
         <div className="experience-text">
           <h2 className="experience-title section-heading">
             Професійний <span className="experience-title-word">досвід</span>
           </h2>
-          <ul
-            ref={experienceListRef}
-            className={`experience-list${isPhoneViewport ? " experience-list-animate" : ""}${
-              isExperienceRevealed ? " revealed" : ""
-            }`}
-          >
-            <li className="experience-item">
+          <ul ref={experienceListRef} className="experience-list">
+            <li className={itemClass(0)}>
               <span className="experience-item-title section-copy section-copy-strong">КНП «МДКЛ 6» ДМР</span>
               <span className="experience-item-role section-copy">
                 Посада: Сестра медична дитячого інфекційного відділення
               </span>
             </li>
-            <li className="experience-item">
+            <li className={itemClass(1)}>
               <span className="experience-item-title section-copy section-copy-strong">КНП «ДЦПМСД 7» ДМР</span>
               <span className="experience-item-role section-copy">
                 Посада: Лікар-педіатр дільничий, сімейний лікар
               </span>
             </li>
-            <li className="experience-item">
+            <li className={itemClass(2)}>
               <span className="experience-item-title section-copy section-copy-strong">КЗ «Дніпропетровський ДБІ» ДОР</span>
               <span className="experience-item-role section-copy">Посада: Лікар-педіатр</span>
             </li>
-            <li className="experience-item">
+            <li className={itemClass(3)}>
               <span className="experience-item-title section-copy section-copy-strong">ТОВ «Валеолайф»</span>
               <span className="experience-item-role section-copy">
                 Посада: Лікар загальної практики сімейної медицини
