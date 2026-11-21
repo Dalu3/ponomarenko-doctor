@@ -1,0 +1,69 @@
+<!--
+  Шаблон листа для EmailJS (нова заявка з сайту).
+
+  Як підключити:
+  1. emailjs.com → Email Templates → відкрити шаблон template_l0n6zzl.
+  2. Content → натиснути "Edit Content" → перемкнутись на "Code Editor" (</>) і вставити весь код нижче.
+  3. Settings шаблону:
+       To Email:   ваша пошта, куди мають приходити заявки
+       From Name:  {{from_name}}
+       Reply To:   {{reply_to}}
+       Subject:    Нова заявка з сайту від {{from_name}}
+  4. Save.
+
+  Змінні, які передає сайт: from_name, first_name, last_name, from_email, reply_to, message, sent_at.
+-->
+<div style="margin:0;padding:24px 12px;background:#f3f5f4;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e3e8e6;">
+
+    <!-- Шапка -->
+    <tr>
+      <td style="background:#2f6f62;padding:24px 28px;">
+        <div style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:#cfe5df;">anastasiiaponomarenko.com</div>
+        <div style="font-size:22px;font-weight:600;color:#ffffff;margin-top:6px;">Нова заявка з сайту</div>
+      </td>
+    </tr>
+
+    <!-- Дані відправника -->
+    <tr>
+      <td style="padding:28px 28px 8px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="padding:10px 0;border-bottom:1px solid #eef1f0;width:110px;font-size:13px;color:#7a8783;vertical-align:top;">Від кого</td>
+            <td style="padding:10px 0;border-bottom:1px solid #eef1f0;font-size:16px;font-weight:600;color:#1f2a27;">{{from_name}}</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 0;border-bottom:1px solid #eef1f0;font-size:13px;color:#7a8783;vertical-align:top;">E-mail</td>
+            <td style="padding:10px 0;border-bottom:1px solid #eef1f0;font-size:15px;">
+              <a href="mailto:{{from_email}}" style="color:#2f6f62;text-decoration:none;">{{from_email}}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px 0;font-size:13px;color:#7a8783;vertical-align:top;">Отримано</td>
+            <td style="padding:10px 0;font-size:15px;color:#1f2a27;">{{sent_at}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- Повідомлення -->
+    <tr>
+      <td style="padding:12px 28px 8px;">
+        <div style="font-size:13px;color:#7a8783;margin-bottom:8px;">Повідомлення</div>
+        <div style="background:#f6f9f8;border-left:4px solid #2f6f62;border-radius:8px;padding:16px 18px;font-size:15px;line-height:1.6;color:#1f2a27;white-space:pre-wrap;word-break:break-word;">{{message}}</div>
+      </td>
+    </tr>
+
+    <!-- Кнопка «Відповісти» -->
+    <tr>
+      <td align="center" style="padding:24px 28px 32px;">
+        <a href="mailto:{{from_email}}?subject=%D0%92%D1%96%D0%B4%D0%BF%D0%BE%D0%B2%D1%96%D0%B4%D1%8C%20%D0%BD%D0%B0%20%D0%B2%D0%B0%D1%88%D0%B5%20%D0%BF%D0%BE%D0%B2%D1%96%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%BD%D1%8F"
+           style="display:inline-block;background:#2f6f62;color:#ffffff;text-decoration:none;font-size:16px;font-weight:600;padding:14px 32px;border-radius:10px;">
+          Відповісти {{first_name}}
+        </a>
+        <div style="font-size:12px;color:#9aa5a2;margin-top:14px;">Або просто натисніть «Відповісти» в поштовому клієнті: відповідь піде на {{from_email}}</div>
+      </td>
+    </tr>
+
+  </table>
+</div>

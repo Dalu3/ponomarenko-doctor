@@ -101,10 +101,30 @@ const Footer = () => {
             return;
         }
 
-        emailjs.sendForm(
+        const firstName = formData.first_name.trim();
+        const lastName = formData.last_name.trim();
+        const email = formData.user_email.trim();
+
+        // Змінні для шаблону EmailJS (див. email-template/contact-request.html)
+        const templateParams = {
+            first_name: firstName,
+            last_name: lastName,
+            from_name: `${firstName} ${lastName}`,
+            user_email: email,
+            from_email: email,
+            reply_to: email,
+            message: formData.message.trim(),
+            sent_at: new Date().toLocaleString("uk-UA", {
+                timeZone: "Europe/Kyiv",
+                dateStyle: "long",
+                timeStyle: "short",
+            }),
+        };
+
+        emailjs.send(
             "service_tr9e4iv",
             "template_l0n6zzl",
-            form.current,
+            templateParams,
             "kHqBl_kyMBasLhFa-"
         )
         .then(() => {
