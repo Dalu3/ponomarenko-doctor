@@ -72,7 +72,22 @@ const CookieBanner = () => {
             aria-label="Повідомлення про cookies"
         >
             <div className="cookie-banner__copy">
-                <p className="cookie-banner__eyebrow">Cookies</p>
+                <div className="cookie-banner__head">
+                    <span className="cookie-banner__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                            <path
+                                d="M12 3a9 9 0 1 0 9 9 3 3 0 0 1-3.5-3A3 3 0 0 1 14 5.5 3 3 0 0 1 12 3Z"
+                                stroke="currentColor"
+                                strokeWidth="1.7"
+                                strokeLinejoin="round"
+                            />
+                            <circle cx="8.5" cy="10.5" r="1.1" fill="currentColor" />
+                            <circle cx="14.5" cy="15" r="1.1" fill="currentColor" />
+                            <circle cx="9.5" cy="16" r="0.9" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <p className="cookie-banner__eyebrow">Файли cookie</p>
+                </div>
                 <p className="cookie-banner__text">
                     Ми використовуємо cookies, щоб сайт працював стабільно,
                     запам’ятовував ваші налаштування та допомагав нам
