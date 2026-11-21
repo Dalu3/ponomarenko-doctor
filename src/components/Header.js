@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../images/logo.png";
 
+const navItems = [
+    { target: "about", label: "Ваш лікар" },
+    { target: "experience", label: "Досвід" },
+    { target: "services", label: "Послуги" },
+];
+
 export default function Header() {
     const bookingUrl = "https://helsi.me/doctor/78c465a1-8408-4997-bb04-3588bcfa2087";
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,10 +64,21 @@ export default function Header() {
             }
         };
 
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                setIsMenuOpen(false);
+            }
+        };
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
         document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("keydown", handleKeyDown);
 
         return () => {
+            document.body.style.overflow = previousOverflow;
             document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleKeyDown);
         };
     }, [isMenuOpen]);
 
@@ -86,7 +103,7 @@ export default function Header() {
                 onClick={closeMenu}
                 aria-hidden={!isMenuOpen}
             />
-            <header className={`header-main-div ${isMenuOpen ? "sticky" : ""}`} ref={headerRef}>
+            <header className={`header-main-div ${isMenuOpen ? "menu-open" : ""}`} ref={headerRef}>
                 <img
                     src={logo}
                     onClick={() => scrollToTarget("top")}
@@ -108,17 +125,25 @@ export default function Header() {
 
                 <div className={`header-second-div ${isMenuOpen ? "open" : ""}`} id="header-navigation">
                     <ul className="nav-list">
-                        <li className="nav-item" onClick={() => scrollToTarget("about")}>
-                            Ваш лікар
-                        </li>
-                        <li className="nav-item" onClick={() => scrollToTarget("experience")}>
-                            Досвід
-                        </li>
-                        <li className="nav-item" onClick={() => scrollToTarget("services")}>
-                            Послуги
-                        </li>
+                        {navItems.map((item, index) => (
+                            <li
+                                key={item.target}
+                                className="nav-item"
+                                style={{ "--i": index }}
+                                onClick={() => scrollToTarget(item.target)}
+                            >
+                                <span>{item.label}</span>
+                                <svg className="nav-item-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M9 5l7 7-7 7" />
+                                </svg>
+                            </li>
+                        ))}
                     </ul>
-                    <button className="header-button" onClick={openBooking}>
+                    <button
+                        className="header-button"
+                        style={{ "--i": navItems.length }}
+                        onClick={openBooking}
+                    >
                         {"Запишіться\u00A0зараз"}
                     </button>
                 </div>

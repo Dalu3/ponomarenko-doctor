@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Raleway", sans-serif;
+    font-family: var(--font-main);
 }
 
 body,
@@ -40,7 +40,7 @@ html::-webkit-scrollbar,
 }
 
 button {
-    font-family: "Raleway", sans-serif;
+    font-family: var(--font-main);
 }
 
 .header-main-div {
@@ -52,7 +52,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 20px; /* Reduced padding for mobile */
+    padding: 0 var(--header-inline);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     flex-wrap: wrap;
@@ -116,12 +116,12 @@ button {
 }
 
 .nav-item {
-    font-size: 18px;
+    font-size: var(--fs-text-s);
     color: #165956;
     cursor: pointer;
     padding: 5px 10px;
     text-align: center;
-    font-weight: 600;
+    font-weight: var(--fw-semibold);
 }
 
 .nav-item:hover {
@@ -134,7 +134,7 @@ button {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    font-size: 18px;
+    font-size: var(--fs-text-s);
     color: white;
     background: linear-gradient(135deg, #165956 0%, #165956 100%);
     border: none;
@@ -147,8 +147,8 @@ button {
         transform 0.28s ease,
         box-shadow 0.28s ease,
         background-position 0.35s ease;
-    font-weight: 600;
-    line-height: 1.1;
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-button);
     text-wrap: nowrap;
     white-space: nowrap;
     overflow-wrap: normal;
@@ -194,49 +194,6 @@ button {
     outline-offset: 0.1875rem;
 }
 
-/* Responsive Styles */
-@media (max-width: 998px) {
-    .menu-icon {
-        display: block; /* Show hamburger menu on small screens */
-        padding-right: 50px;
-    }
-
-    .header-logo {
-        width: 120px;
-        height: auto;
-        cursor: pointer;
-    }
-
-    .header-second-div {
-        display: none; /* Hide the navigation by default on small screens */
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        right: 20px;
-        background-color: #edfdfc;
-        width: 250px;
-        padding: 20px;
-        padding-top: 35px;
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        z-index: 15;
-    }
-
-    .header-second-div.open {
-        display: flex; /* Show navigation when menu is open */
-    }
-
-    .nav-list {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .header-button {
-        width: 100%;
-        text-align: center;
-    }
-}
-
 .hamburger {
     display: none;
     width: 44px;
@@ -255,14 +212,15 @@ button {
     position: absolute;
     left: 50%;
     width: 24px;
-    height: 1.8px;
+    height: 2px;
     margin-left: -12px;
     background-color: #165956;
     border-radius: 3px;
+    transform-origin: center;
     transition:
-        transform 0.3s ease,
-        opacity 0.2s ease;
-    will-change: transform, opacity;
+        top 0.2s ease 0.2s,
+        transform 0.25s cubic-bezier(0.65, 0, 0.35, 1) 0s,
+        opacity 0.15s ease 0.15s;
 }
 
 .hamburger span:nth-child(1) {
@@ -277,8 +235,17 @@ button {
     top: 28px;
 }
 
+/* open: bars first collapse to the middle, then rotate into an X */
+.hamburger.open span {
+    transition:
+        top 0.2s ease 0s,
+        transform 0.25s cubic-bezier(0.65, 0, 0.35, 1) 0.2s,
+        opacity 0.15s ease 0.1s;
+}
+
 .hamburger.open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    top: 21px;
+    transform: rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
@@ -286,20 +253,23 @@ button {
 }
 
 .hamburger.open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    top: 21px;
+    transform: rotate(-45deg);
 }
 
 .menu-overlay {
     display: none;
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(10, 36, 35, 0.45);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
+        opacity 0.35s ease,
+        visibility 0.35s ease;
     z-index: 9;
 }
 
@@ -311,96 +281,183 @@ button {
 
 @media (max-width: 1060px) {
     .header-main-div {
-        box-sizing: border-box;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .header-main-div.menu-open {
+        box-shadow: none;
     }
 
     .hamburger {
         display: flex;
+        /* the 24px icon sits centred in a 44px button: pull it to the gutter line */
+        margin-right: -10px;
     }
 
     .menu-overlay {
         display: block;
     }
 
-    .header-logo {
-        width: 120px;
-    }
-
+    /* panel slides down from under the header bar */
     .header-second-div {
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        align-items: stretch;
+        gap: 0;
         position: absolute;
-        top: 5px;
-        right: 20px;
-        width: min(208px, calc(100vw - 32px));
-        padding: 48px 16px 10px;
-        --menu-point-font-size: 16px;
-        background-color: #ffffff;
-        border-radius: 20px;
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
-        opacity: 0;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 4px var(--header-inline) 28px;
+        background-color: #edfdfc;
+        border-top: 1px solid rgba(22, 89, 86, 0.1);
+        border-radius: 0 0 28px 28px;
+        box-shadow: 0 24px 40px rgba(10, 36, 35, 0.18);
+        clip-path: inset(0 0 100% 0);
         visibility: hidden;
         pointer-events: none;
-        transform: translateY(-12px);
         transition:
-            opacity 0.3s ease,
-            transform 0.3s ease,
-            visibility 0.3s ease;
+            clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            visibility 0s linear 0.4s;
         z-index: 20;
     }
 
     .header-second-div.open {
-        opacity: 1;
+        clip-path: inset(0 0 -60px 0);
         visibility: visible;
         pointer-events: auto;
-        transform: translateY(0);
+        transition:
+            clip-path 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+            visibility 0s;
     }
 
     .nav-list {
         flex-direction: column;
         width: 100%;
-        gap: 10px;
+        gap: 0;
+    }
+
+    .nav-item,
+    .header-second-div .header-button {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .header-second-div.open .nav-item,
+    .header-second-div.open .header-button {
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+            opacity 0.35s ease calc(0.12s + var(--i, 0) * 0.06s),
+            transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) calc(0.12s + var(--i, 0) * 0.06s);
     }
 
     .nav-item {
-        font-size: var(--menu-point-font-size);
-        font-weight: 700;
-        padding: 3px 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 2px;
+        font-size: var(--fs-text-l);
+        font-weight: var(--fw-semibold);
+        text-align: left;
+        border-bottom: 1px solid rgba(22, 89, 86, 0.12);
+    }
+
+    .nav-item-arrow {
+        flex: none;
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.55;
+        transition:
+            transform 0.25s ease,
+            opacity 0.25s ease;
+    }
+
+    .nav-item:hover .nav-item-arrow,
+    .nav-item:active .nav-item-arrow {
+        transform: translateX(3px);
+        opacity: 1;
     }
 
     .header-button {
         width: 100%;
+        margin-top: 24px;
+        padding: 16px 20px;
+        font-size: var(--fs-text-m);
+        font-weight: var(--fw-bold);
         text-align: center;
-        font-size: var(--menu-point-font-size);
-        font-weight: 700;
-        padding: 11px 14px;
-        margin: 0 0 7px;
+    }
+
+    .header-second-div .header-button:hover {
+        transform: translateY(-2px);
     }
 }
 
-@media (max-width: 376px) {
-    .header-second-div {
-        right: 12px;
-        width: min(192px, calc(100vw - 24px));
-        gap: 8px;
-        padding: 40px 12px 8px;
-        --menu-point-font-size: 15px;
-        border-radius: 16px;
+@media (min-width: 600px) and (max-width: 1060px) {
+    .header-second-div .header-button {
+        align-self: flex-start;
+        width: auto;
+        min-width: 280px;
+        padding: 16px 40px;
+    }
+}
+
+@media (min-width: 1061px) {
+    .nav-item-arrow {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header-second-div,
+    .header-second-div.open,
+    .nav-item,
+    .header-second-div .header-button,
+    .hamburger span {
+        transition: none !important;
+    }
+}
+
+/* phones: slightly smaller logo and burger / X icon */
+@media (max-width: 600px) {
+    .header-logo {
+        width: 136px;
     }
 
-    .nav-list {
-        gap: 8px;
+    .hamburger {
+        /* 20px icon centred in a 44px tap target: pull it to the gutter line */
+        margin-right: -12px;
     }
 
-    .nav-item {
-        font-size: var(--menu-point-font-size);
-        padding: 2px 6px;
+    .hamburger span {
+        width: 20px;
+        height: 1.8px;
+        margin-left: -10px;
     }
 
-    .header-button {
-        font-size: var(--menu-point-font-size);
-        padding: 10px 10px;
-        padding-bottom: 14px;
+    .hamburger span:nth-child(1) {
+        top: 15.5px;
+    }
+
+    .hamburger span:nth-child(2) {
+        top: 21.1px;
+    }
+
+    .hamburger span:nth-child(3) {
+        top: 26.7px;
+    }
+
+    .hamburger.open span:nth-child(1),
+    .hamburger.open span:nth-child(3) {
+        top: 21.1px;
     }
 }
