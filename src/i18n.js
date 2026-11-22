@@ -167,14 +167,14 @@ const translations = {
                 services: "Services",
             },
             booking: "Book now",
-            logoAlt: "Logo of Dr Anastasiia Oleksandrivna Ponomarenko",
+            logoAlt: "Logo of Dr Anastasiia Ponomarenko",
             openMenu: "Open navigation menu",
             closeMenu: "Close navigation menu",
         },
         main: {
             subtitle: "Paediatrician and family doctor in Dnipro",
             titleFirst: "Ponomarenko",
-            titleSecond: "Anastasiia Oleksandrivna",
+            titleSecond: "Anastasiia",
             descriptionFull:
                 "I care for children and adults: appointments under an NHSU declaration, private and online consultations, and home visits.",
             descriptionShortFirst: "I see children and adults:",

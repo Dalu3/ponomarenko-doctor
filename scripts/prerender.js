@@ -93,7 +93,7 @@ const enMeta = {
     title: "Paediatrician and Family Doctor in Dnipro | Anastasiia Ponomarenko",
     description:
         "Paediatrician and family doctor in Dnipro. Appointments under an NHSU declaration at the Valeo Medical Centre (148 Robocha Street), private and online consultations, and home visits.",
-    siteName: "Anastasiia Oleksandrivna Ponomarenko",
+    siteName: "Anastasiia Ponomarenko",
     imageAlt: "Anastasiia Ponomarenko, doctor in Dnipro",
 };
 
