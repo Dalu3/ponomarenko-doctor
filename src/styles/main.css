@@ -53,7 +53,7 @@
     overflow: hidden;
     min-width: 15rem;
     margin-top: 1.25rem;
-    padding: 0.875rem 2.125rem;
+    padding: 1rem 2.125rem;
     border: none;
     margin-top: 30px;
     border-radius: 3.125rem;
@@ -154,7 +154,7 @@
 
     .main-button {
         min-width: 13.75rem;
-        padding: 0.8125rem 1.75rem;
+        padding: 1rem 1.75rem;
     }
 }
 
@@ -234,7 +234,14 @@
     .main-button {
         min-width: 13.75rem;
         margin-top: 0.3125rem;
-        padding: 0.9375rem 1.625rem;
+        padding: 1rem 1.625rem;
     }
 }
 
+
+/* English copy is longer: widen the hero description so it stays on two lines */
+@media screen and (min-width: 769px) {
+    :lang(en) .main-description {
+        max-width: 44rem;
+    }
+}

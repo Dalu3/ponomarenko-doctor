@@ -1,35 +1,11 @@
 import React, { useState } from "react";
 import faqPhoto from "../images/likar-chytaie-knyhu.jpg";
+import { useTranslations } from "../i18n";
 
-// Чернетка відповідей: перед публікацією їх має переглянути лікарка.
-const faqItems = [
-    {
-        question: "Як підписати декларацію з педіатром у Дніпрі?",
-        answer: "Прийдіть до медичного центру «Валео» на вул. Робочій, 148 у робочі години або попередньо запишіться через Helsi. Візьміть із собою паспорт і РНОКПП. Для дитини потрібні свідоцтво про народження та документи одного з батьків.",
-    },
-    {
-        question: "Чи можна отримати консультацію без декларації?",
-        answer: "Так. Якщо ви не хочете укладати декларацію, можна записатися на приватну консультацію.",
-    },
-    {
-        question: "Ви приймаєте тільки дітей чи дорослих також?",
-        answer: "Я педіатр і лікар загальної практики сімейної медицини, тому приймаю і дітей, і дорослих. Можна обслуговуватися всією родиною в одного лікаря.",
-    },
-    {
-        question: "Як проходить онлайн-консультація?",
-        answer: "Онлайн-консультації доступні з 9:00 до 20:00. Залиште повідомлення через форму на сайті або запишіться через Helsi, і ми домовимося про зручний час.",
-    },
-    {
-        question: "Чи можна викликати лікаря додому?",
-        answer: "Так, консультації вдома проводяться в межах Дніпра за попередньою домовленістю.",
-    },
-    {
-        question: "Який графік прийому в медичному центрі?",
-        answer: "Понеділок, середа, п’ятниця: 9:00–13:00. Вівторок, четвер: 14:00–18:00.",
-    },
-];
 
 export default function Faq() {
+    const t = useTranslations().faq;
+    const faqItems = t.items;
     const [openIndex, setOpenIndex] = useState(0);
 
     const toggle = (index) => {
@@ -48,7 +24,7 @@ export default function Faq() {
                     <img
                         className="faq-image"
                         src={faqPhoto}
-                        alt="Лікар читає медичну книгу в кріслі"
+                        alt={t.imageAlt}
                         loading="lazy"
                         width="600"
                         height="600"
@@ -57,7 +33,7 @@ export default function Faq() {
 
                 <div className="faq-content">
                     <h2 className="faq-title section-heading">
-                        Поширені запитання
+                        {t.title}
                     </h2>
                     <div className="faq-list">
                         {faqItems.map((item, index) => {

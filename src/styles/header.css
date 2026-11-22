@@ -138,7 +138,7 @@ button {
     color: white;
     background: linear-gradient(135deg, #165956 0%, #165956 100%);
     border: none;
-    padding: 14px 34px;
+    padding: 16px 34px;
     border-radius: 50px;
     box-shadow: 0 0.625rem 1.5rem rgba(10, 36, 35, 0.25);
     cursor: pointer;

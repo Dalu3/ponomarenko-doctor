@@ -4,39 +4,17 @@ import check from "../images/check.png";
 import heart from "../images/heart.png";
 import wifi from "../images/wifi.png";
 import home from "../images/home.png";
+import { useTranslations } from "../i18n";
 
-const serviceData = [
-    {
-        icon: check,
-        title: "Безкоштовний прийом за декларацією НСЗУ",
-        description:
-            'Прийом у медичному центрі "Валео" за адресою: вул. Робоча, 148.',
-    },
-    {
-        icon: heart,
-        title: "Приватна консультація без декларації",
-        description:
-            "Можливість отримати консультацію без укладення декларації.",
-    },
-    {
-        icon: wifi,
-        title: "Онлайн-консультація лікаря",
-        description:
-            "Консультації для пацієнтів, які не можуть прийти на особисту зустріч.",
-    },
-    {
-        icon: home,
-        title: "Виклик лікаря додому у Дніпрі",
-        description:
-            "Надання професійної допомоги вдома для вашого комфорту та зручності.",
-    },
-];
+const serviceIcons = [check, heart, wifi, home];
 
 const Services = () => {
+    const t = useTranslations().services;
+    const serviceData = t.items.map((item, index) => ({ ...item, icon: serviceIcons[index] }));
     const servicesRef = useRef(null);
     const cardRefs = useRef([]);
     const [shouldAnimate, setShouldAnimate] = useState(false);
-    const [revealedCards, setRevealedCards] = useState(() => serviceData.map(() => false));
+    const [revealedCards, setRevealedCards] = useState(() => serviceIcons.map(() => false));
 
     useEffect(() => {
         if (!servicesRef.current || revealedCards.every(Boolean)) {
@@ -136,9 +114,9 @@ const Services = () => {
     return (
         <div id="services" className="services-section">
         <h2 className="services-section-title">
-            <span className="title-left">Як я можу допомогти </span>
+            <span className="title-left">{t.titleLeft}</span>
             <span className="title-underline"></span>
-            <span className="title-right">вам і вашій родині?</span>
+            <span className="title-right">{t.titleRight}</span>
         </h2>
             <div
                 ref={servicesRef}

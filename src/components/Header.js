@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import logo from "../images/logo.png";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import logoUk from "../images/logo.png";
+import logoEn from "../images/logo-en.png";
+import { LocaleContext, useTranslations } from "../i18n";
 
-const navItems = [
-    { target: "about", label: "Ваш лікар" },
-    { target: "experience", label: "Досвід" },
-    { target: "services", label: "Послуги" },
-];
+const navTargets = ["about", "experience", "services"];
 
 export default function Header() {
+    const t = useTranslations().header;
+    const logo = useContext(LocaleContext) === "en" ? logoEn : logoUk;
+    const navItems = navTargets.map((target) => ({ target, label: t.nav[target] }));
     const bookingUrl = "https://helsi.me/doctor/78c465a1-8408-4997-bb04-3588bcfa2087";
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const headerRef = useRef(null);
@@ -108,13 +109,13 @@ export default function Header() {
                     src={logo}
                     onClick={() => scrollToTarget("top")}
                     className="header-logo"
-                    alt="Логотип лікаря Анастасії Олександрівни Пономаренко"
+                    alt={t.logoAlt}
                 />
                 <button
                     type="button"
                     className={`menu-icon hamburger ${isMenuOpen ? "open" : ""}`}
                     onClick={toggleMenu}
-                    aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-label={isMenuOpen ? t.closeMenu : t.openMenu}
                     aria-expanded={isMenuOpen}
                     aria-controls="header-navigation"
                 >
@@ -144,7 +145,7 @@ export default function Header() {
                         style={{ "--i": navItems.length }}
                         onClick={openBooking}
                     >
-                        {"Запишіться\u00A0зараз"}
+                        {t.booking}
                     </button>
                 </div>
             </header>

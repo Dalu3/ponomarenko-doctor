@@ -3,8 +3,11 @@ import photo from "../images/ponomarenko-pediatr-portret.jpg";
 import subtract from "../images/Subtract.png";
 import image from "../images/medychnyi-dovidnyk-rentgen.jpg";
 import subtract2 from "../images/Subtract2.png";
+import { useTranslations } from "../i18n";
 
 export default function About() {
+  const translations = useTranslations();
+  const t = translations.about;
   const instagramUrl = "https://www.instagram.com/pediatr.a?igsh=ZXI5NzhjcmE4eDg5";
   const experienceListRef = useRef(null);
   const [visibleItems, setVisibleItems] = useState([]);
@@ -48,17 +51,17 @@ export default function About() {
     `experience-item experience-item-reveal${visibleItems.includes(index) ? " is-visible" : ""}`;
 
   return (
-    <section id="about" className="about-section" lang="uk">
+    <section id="about" className="about-section" lang={translations.htmlLang}>
       <div className="about-container">
         <div className="about-text">
                     <h2 className="about-title section-heading">
-                        Мене звати <span className="about-title-name">Анастасія</span>
+                        {t.titleStart}<span className="about-title-name">{t.titleName}</span>
                     </h2>
           <p className="about-description section-copy">
-            Я лікар-педіатр і лікар загальної практики сімейної медицини. У 2018 році закінчила Дніпропетровську державну медичну академію, пройшла інтернатуру з педіатрії та спеціалізацію із загальної практики сімейної медицини.
+            {t.description}
           </p>
           <p className="about-subtitle section-copy">
-            Веду прийом у медичному центрі «Валео» на вул. Робочій, 148 у Дніпрі. Спостерігаю дітей від народження, лікую дорослих і до кожного пацієнта шукаю індивідуальний підхід. Буду рада стати лікарем для всієї вашої родини.
+            {t.subtitle}
           </p>
         </div>
         <div className="about-image">
@@ -70,9 +73,9 @@ export default function About() {
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram лікаря"
+            aria-label={t.instagramLabel}
           >
-            <img src={photo} alt="Пономаренко Анастасія лікар Дніпро" className="about-photo" />
+            <img src={photo} alt={t.photoAlt} className="about-photo" />
           </a>
         </div>
         
@@ -86,38 +89,22 @@ export default function About() {
             href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram лікаря"
+            aria-label={t.instagramLabel}
           >
-            <img src={image} alt="Лікар гортає медичний довідник із рентгенівськими знімками" className="experience-photo" />
+            <img src={image} alt={t.experienceImageAlt} className="experience-photo" />
           </a>
         </div>
         <div className="experience-text">
           <h2 className="experience-title section-heading">
-            Професійний <span className="experience-title-word">досвід</span>
+            {t.experienceTitleStart}<span className="experience-title-word">{t.experienceTitleWord}</span>
           </h2>
           <ul ref={experienceListRef} className="experience-list">
-            <li className={itemClass(0)}>
-              <span className="experience-item-title section-copy section-copy-strong">КНП «МДКЛ 6» ДМР</span>
-              <span className="experience-item-role section-copy">
-                Посада: Сестра медична дитячого інфекційного відділення
-              </span>
-            </li>
-            <li className={itemClass(1)}>
-              <span className="experience-item-title section-copy section-copy-strong">КНП «ДЦПМСД 7» ДМР</span>
-              <span className="experience-item-role section-copy">
-                Посада: Лікар-педіатр дільничий, сімейний лікар
-              </span>
-            </li>
-            <li className={itemClass(2)}>
-              <span className="experience-item-title section-copy section-copy-strong">КЗ «Дніпропетровський ДБІ» ДОР</span>
-              <span className="experience-item-role section-copy">Посада: Лікар-педіатр</span>
-            </li>
-            <li className={itemClass(3)}>
-              <span className="experience-item-title section-copy section-copy-strong">ТОВ «Валеолайф»</span>
-              <span className="experience-item-role section-copy">
-                Посада: Лікар загальної практики сімейної медицини
-              </span>
-            </li>
+            {t.experience.map((item, index) => (
+              <li key={item.title} className={itemClass(index)}>
+                <span className="experience-item-title section-copy section-copy-strong">{item.title}</span>
+                <span className="experience-item-role section-copy">{item.role}</span>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

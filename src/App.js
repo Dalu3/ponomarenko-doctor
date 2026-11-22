@@ -6,6 +6,7 @@ import Services from "./components/Services";
 import Faq from "./components/Faq";
 import Footer from "./components/Footer";
 import CookieBanner from "./components/CookieBanner";
+import { DEFAULT_LOCALE, LocaleContext } from "./i18n";
 import "./styles/header.css";
 import "./styles/main.css";
 import "./styles/about.css";
@@ -15,7 +16,7 @@ import "./styles/services.css";
 import "./styles/faq.css";
 import "./styles/cookie-banner.css";
 
-function App() {
+function App({ locale = DEFAULT_LOCALE }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -70,6 +71,7 @@ function App() {
     }, []);
 
     return (
+        <LocaleContext.Provider value={locale}>
         <div>
             {isLoading && (
                 <div className="app-loader" aria-hidden="true">
@@ -86,6 +88,7 @@ function App() {
             <Footer />
             <CookieBanner />
         </div>
+        </LocaleContext.Provider>
     );
 }
 

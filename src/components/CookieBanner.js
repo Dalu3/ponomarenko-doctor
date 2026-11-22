@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslations } from "../i18n";
 
 const COOKIE_CONSENT_KEY = "ponomarenko_cookie_consent";
 
@@ -35,6 +36,7 @@ const saveConsent = (decision) => {
 };
 
 const CookieBanner = () => {
+    const t = useTranslations().cookie;
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -69,7 +71,7 @@ const CookieBanner = () => {
         <aside
             className="cookie-banner"
             aria-live="polite"
-            aria-label="Повідомлення про cookies"
+            aria-label={t.label}
         >
             <div className="cookie-banner__copy">
                 <div className="cookie-banner__head">
@@ -86,12 +88,10 @@ const CookieBanner = () => {
                             <circle cx="9.5" cy="16" r="0.9" fill="currentColor" />
                         </svg>
                     </span>
-                    <p className="cookie-banner__eyebrow">Файли cookie</p>
+                    <p className="cookie-banner__eyebrow">{t.eyebrow}</p>
                 </div>
                 <p className="cookie-banner__text">
-                    Ми використовуємо cookies, щоб сайт працював стабільно,
-                    запам’ятовував ваші налаштування та допомагав нам
-                    покращувати досвід користування.
+                    {t.text}
                 </p>
             </div>
 
@@ -101,14 +101,14 @@ const CookieBanner = () => {
                     className="cookie-banner__button cookie-banner__button--secondary"
                     onClick={handleReject}
                 >
-                    Відхилити
+                    {t.reject}
                 </button>
                 <button
                     type="button"
                     className="cookie-banner__button cookie-banner__button--primary"
                     onClick={handleAccept}
                 >
-                    Прийняти
+                    {t.accept}
                 </button>
             </div>
         </aside>

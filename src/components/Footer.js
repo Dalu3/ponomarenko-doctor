@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import inst from "../images/instagram.svg";
 import linkedin from "../images/linkedin.svg";
+import { useTranslations } from "../i18n";
 
 const initialFormData = {
     first_name: "",
@@ -16,6 +17,8 @@ const allFieldsTouched = Object.keys(initialFormData).reduce((acc, field) => {
 }, {});
 
 const Footer = () => {
+    const translations = useTranslations();
+    const t = translations.footer;
     const form = useRef();
     const currentYear = new Date().getFullYear();
     
@@ -128,7 +131,7 @@ const Footer = () => {
             "kHqBl_kyMBasLhFa-"
         )
         .then(() => {
-            showPopupMessage("Ваше повідомлення успішно надіслано!"); // Success message
+            showPopupMessage(t.success); // Success message
 
             // Clear form data
             setFormData(initialFormData);
@@ -136,7 +139,7 @@ const Footer = () => {
             setTouchedFields({});
         })
         .catch(() => {
-            showPopupMessage("Помилка відправлення. Будь ласка, спробуйте ще раз."); // Error message
+            showPopupMessage(t.error); // Error message
         });
         
     };
@@ -155,29 +158,29 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-info">
                     <section className="footer-block">
-                        <h2 className="footer-title">Робочі години</h2>
+                        <h2 className="footer-title">{t.hoursTitle}</h2>
                         <ul className="footer-schedule">
                             <li>
-                                <span className="day">Понеділок, середа, п’ятниця</span>
+                                <span className="day">{t.scheduleWeekdaysA}</span>
                                 <span className="time">9:00 – 13:00</span>
                             </li>
                             <li>
-                                <span className="day">Вівторок, четвер</span>
+                                <span className="day">{t.scheduleWeekdaysB}</span>
                                 <span className="time">14:00 – 18:00</span>
                             </li>
                             <li>
-                                <span className="day">Онлайн-консультації</span>
+                                <span className="day">{t.scheduleOnline}</span>
                                 <span className="time">9:00 – 20:00</span>
                             </li>
                         </ul>
-                        <p className="footer-note">Консультації на дому проводяться за попередньою домовленістю.</p>
+                        <p className="footer-note">{t.homeNote}</p>
                     </section>
 
                     <section className="footer-block">
-                        <h2 className="footer-title">Адреса та запис</h2>
+                        <h2 className="footer-title">{t.addressTitle}</h2>
                         <address className="footer-address-body">
-                            <p className="footer-address-name">Медичний центр «Валео»</p>
-                            <p>вул. Робоча, 148, Дніпро</p>
+                            <p className="footer-address-name">{t.clinicName}</p>
+                            <p>{t.street}</p>
                             <p>
                                 <a className="footer-phone" href="tel:+380982323401">+38 (098) 232-34-01</a>
                             </p>
@@ -188,39 +191,39 @@ const Footer = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Відкрити на карті
+                                {t.openMap}
                             </a>
                             <a
                                 href="https://helsi.me/doctor/78c465a1-8408-4997-bb04-3588bcfa2087"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Записатися через Helsi
+                                {t.bookHelsi}
                             </a>
                         </div>
                     </section>
 
                     <div className="footer-icons-div">
-                        <a href="https://www.instagram.com/pediatr.a?igsh=ZXI5NzhjcmE4eDg5" target="_blank" rel="noopener noreferrer" aria-label="Instagram Анастасії Пономаренко">
-                            <img className="instagram" src={inst} alt="Instagram Анастасії Пономаренко" />
+                        <a href="https://www.instagram.com/pediatr.a?igsh=ZXI5NzhjcmE4eDg5" target="_blank" rel="noopener noreferrer" aria-label={t.instagramLabel}>
+                            <img className="instagram" src={inst} alt={t.instagramLabel} />
                         </a>
-                        <a href="https://www.linkedin.com/in/%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D1%96%D1%8F-%D0%BF%D0%BE%D0%BD%D0%BE%D0%BC%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE-46260234b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Анастасії Пономаренко">
-                            <img className="linkedin" src={linkedin} alt="LinkedIn Анастасії Пономаренко" />
+                        <a href="https://www.linkedin.com/in/%D0%B0%D0%BD%D0%B0%D1%81%D1%82%D0%B0%D1%81%D1%96%D1%8F-%D0%BF%D0%BE%D0%BD%D0%BE%D0%BC%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE-46260234b/" target="_blank" rel="noopener noreferrer" aria-label={t.linkedinLabel}>
+                            <img className="linkedin" src={linkedin} alt={t.linkedinLabel} />
                         </a>
                     </div>
                 </div>
 
                 <div id="contact-form" className="contact-form-container">
-                    <h2>Залиште повідомлення</h2>
+                    <h2>{t.formTitle}</h2>
                     <form ref={form} onSubmit={sendEmail} className="contact-form" noValidate>
                         <div className="input-group">
                             <div className={`input-wrapper${errors.first_name ? " has-error" : ""}`}>
-                                <label htmlFor="first_name">Ім’я *</label>
+                                <label htmlFor="first_name">{t.firstNameLabel}</label>
                                 <input 
                                     type="text" 
                                     id="first_name" 
                                     name="first_name" 
-                                    placeholder="Вкажіть ім’я"
+                                    placeholder={t.firstNamePlaceholder}
                                     value={formData.first_name}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -229,12 +232,12 @@ const Footer = () => {
                                 />
                             </div>
                             <div className={`input-wrapper${errors.last_name ? " has-error" : ""}`}>
-                                <label htmlFor="last_name">Прізвище *</label>
+                                <label htmlFor="last_name">{t.lastNameLabel}</label>
                                 <input 
                                     type="text" 
                                     id="last_name" 
                                     name="last_name" 
-                                    placeholder="Вкажіть прізвище"
+                                    placeholder={t.lastNamePlaceholder}
                                     value={formData.last_name}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -245,12 +248,12 @@ const Footer = () => {
                         </div>
 
                         <div className={`input-wrapper${errors.user_email ? " has-error" : ""}`}>
-                            <label htmlFor="user_email">Пошта *</label>
+                            <label htmlFor="user_email">{t.emailLabel}</label>
                             <input 
                                 type="email" 
                                 id="user_email" 
                                 name="user_email" 
-                                placeholder="Вкажіть email"
+                                placeholder={t.emailPlaceholder}
                                 value={formData.user_email}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -260,11 +263,11 @@ const Footer = () => {
                         </div>
 
                         <div className={`input-wrapper${errors.message ? " has-error" : ""}`}>
-                            <label htmlFor="message">Повідомлення *</label>
+                            <label htmlFor="message">{t.messageLabel}</label>
                             <textarea 
                                 id="message" 
                                 name="message" 
-                                placeholder="Напишіть повідомлення"
+                                placeholder={t.messagePlaceholder}
                                 value={formData.message}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -273,12 +276,11 @@ const Footer = () => {
                             ></textarea>
                         </div>
 
-                        <button type="submit">Надіслати</button>
+                        <button type="submit">{t.submit}</button>
                         <p className="contact-form-consent">
-                            Натискаючи кнопку, ви надаєте згоду на обробку
-                            персональних даних згідно з{" "}
-                            <a href="/privacy-policy.html">
-                                Політики конфіденційності
+                            {t.consent}{" "}
+                            <a href={translations.privacyPolicyUrl}>
+                                {t.consentLink}
                             </a>
                         </p>
                     </form>

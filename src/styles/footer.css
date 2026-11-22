@@ -468,3 +468,10 @@
         text-align: left;
     }
 }
+
+/* English version: slightly narrower form, a little more room for the info column */
+@media screen and (min-width: 1234px) {
+    :lang(en) .footer-content {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 680px);
+    }
+}
