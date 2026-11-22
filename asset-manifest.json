@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2fa30024.css",
-    "main.js": "/static/js/main.67cb9511.js",
+    "main.css": "/static/css/main.d8ff16f4.css",
+    "main.js": "/static/js/main.6a53d4bc.js",
     "static/media/likar-chytaie-knyhu.jpg": "/static/media/likar-chytaie-knyhu.71705d56444b02b00709.jpg",
     "static/media/medychnyi-dovidnyk-rentgen.jpg": "/static/media/medychnyi-dovidnyk-rentgen.933fb3b25942b3ed5be1.jpg",
     "static/media/ponomarenko-pediatr-portret.jpg": "/static/media/ponomarenko-pediatr-portret.8b8acc7370a8932786a6.jpg",
@@ -9,13 +9,14 @@
     "static/media/background.webp": "/static/media/background.082e68ad0d50d5a65a4a.webp",
     "index.html": "/index.html",
     "static/media/logo.png": "/static/media/logo.1451d70db2ad7ecdc227.png",
+    "static/media/logo-en.png": "/static/media/logo-en.f5d41bbad81049922618.png",
     "static/media/linkedin.svg": "/static/media/linkedin.56026bbcac9852361b7803d6cf5934a8.svg",
     "static/media/instagram.svg": "/static/media/instagram.9b9f2a32a922b7990c3614328d5f2180.svg",
-    "main.2fa30024.css.map": "/static/css/main.2fa30024.css.map",
-    "main.67cb9511.js.map": "/static/js/main.67cb9511.js.map"
+    "main.d8ff16f4.css.map": "/static/css/main.d8ff16f4.css.map",
+    "main.6a53d4bc.js.map": "/static/js/main.6a53d4bc.js.map"
   },
   "entrypoints": [
-    "static/css/main.2fa30024.css",
-    "static/js/main.67cb9511.js"
+    "static/css/main.d8ff16f4.css",
+    "static/js/main.6a53d4bc.js"
   ]
 }
