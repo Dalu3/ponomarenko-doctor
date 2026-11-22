@@ -182,7 +182,7 @@ const Footer = () => {
                             <p className="footer-address-name">{t.clinicName}</p>
                             <p>{t.street}</p>
                             <p>
-                                <a className="footer-phone" href="tel:+380982323401">+38 (098) 232-34-01</a>
+                                <a className="footer-phone" href="tel:+380970078936">+38 (097) 007-89-36</a>
                             </p>
                         </address>
                         <div className="footer-links">

@@ -94,10 +94,6 @@ const translations = {
             // Чернетка відповідей: перед публікацією їх має переглянути лікарка.
             items: [
                 {
-                    question: "Як підписати декларацію з педіатром у Дніпрі?",
-                    answer: "Прийдіть до медичного центру «Валео» на вул. Робочій, 148 у робочі години або попередньо запишіться через Helsi. Візьміть із собою паспорт і РНОКПП. Для дитини потрібні свідоцтво про народження та документи одного з батьків.",
-                },
-                {
                     question: "Чи можна отримати консультацію без декларації?",
                     answer: "Так. Якщо ви не хочете укладати декларацію, можна записатися на приватну консультацію.",
                 },
@@ -107,7 +103,7 @@ const translations = {
                 },
                 {
                     question: "Як проходить онлайн-консультація?",
-                    answer: "Онлайн-консультації доступні з 9:00 до 20:00. Залиште повідомлення через форму на сайті або запишіться через Helsi, і ми домовимося про зручний час.",
+                    answer: "Онлайн-консультації доступні з 9:00 до 20:00. Напишіть нам через форму на сайті, і ми домовимося про зручний час.",
                 },
                 {
                     question: "Чи можна викликати лікаря додому?",
@@ -245,11 +241,6 @@ const translations = {
             items: [
                 {
                     question:
-                        "How do I sign a declaration with a paediatrician in Dnipro?",
-                    answer: "Visit the Valeo Medical Centre at 148 Robocha Street during opening hours, or book in advance via Helsi. Please bring your passport and taxpayer identification number (RNOKPP). For a child, you will need their birth certificate and one parent’s documents.",
-                },
-                {
-                    question:
                         "Can I have a consultation without signing a declaration?",
                     answer: "Yes. If you would rather not sign a declaration, you can book a private consultation.",
                 },
@@ -259,7 +250,7 @@ const translations = {
                 },
                 {
                     question: "How does an online consultation work?",
-                    answer: "Online consultations are available from 9:00 to 20:00. Leave a message using the form on this website or book via Helsi, and we will arrange a time that suits you.",
+                    answer: "Online consultations are available from 9:00 to 20:00. Write to us using the form on this website, and we will arrange a time that suits you.",
                 },
                 {
                     question: "Can I request a home visit?",
